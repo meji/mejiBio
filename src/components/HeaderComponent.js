@@ -1,28 +1,36 @@
-import React, { Component } from 'react';
+import React from 'react';
+import {NavLink} from 'react-router-dom'
 
-class Header extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {}
-    }
-
-    render() {
-        return (
-            <div>
-                <div class="container">
-                    <a id="logo" href="/">MEJI</a>
-                    <nav>
-                        <ul>
-                            <li> <a href="/" title="About">About Me</a></li>
-                            <li> <a href="/cv" title="CV">CV</a></li>
-                            <li> <a href="/projects" title="Projects">Projects</a></li>
-
-                        </ul>
-                    </nav>
-                </div>
+function Header(props) {
+    return (
+        <div>
+            <div className="container">
+                <NavLink to="/">
+                    Meji
+                </NavLink>
+                <nav>
+                    <ul>
+                       <li>
+                            <NavLink to="/">
+                                About me
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/cv">
+                                cv
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/projects">
+                            Projects
+                            </NavLink>
+                        </li>
+                    </ul>
+                </nav>
             </div>
-         );
-    }
+        </div>
+     );
+
 }
 
 export default Header;

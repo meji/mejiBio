@@ -1,16 +1,40 @@
-import React, { Component } from 'react';
+import React  from 'react';
+import {Loading} from "./LoadingComponent";
 
-class Projects extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {}
-    }
-
-    render() {
-        return (
-            <div>Esto es el Prpjects</div>
-         );
-    }
+function Project({project}){
+    return (
+        <li>
+            <h2>Proyecto: {project.name}</h2>
+            <p>{project.charge}</p>
+            <p>{project.description}</p>
+            <p>{project.client}</p>
+            <p>{project.date}</p>
+        </li>
+    )
 }
 
-export default Projects;
+function Projects(props) {
+    const projects = props.projects.map((project)=> {
+            return (<Project project={project} key={project.id}/>)
+    });
+    if(props.projectsLoading){
+        return(
+            <Loading/>
+        );
+    }
+    else if(props.projectsErrMess) {
+        return (
+            <h4>{props.projectsErrMess}</h4>
+        )
+    }
+    return(
+        <div>
+            <h2>Projects</h2>
+            <ul>
+                {projects}
+            </ul>
+        </div>
+    )
+}
+export default Projects
+

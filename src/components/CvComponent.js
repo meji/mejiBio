@@ -1,16 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Courses from './CoursesComponent'
+import Jobs from './JobsComponent'
 
-class Cv extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {}
-    }
+function Cv(props){
+    return (
+        <div>
+            <Courses
+                courses={props.courses}
+                isLoading = {props.courses.Loading}
+                errMess = {props.courses.ErrMess}/>
+            <Jobs
+                courses={props.jobs}
+                isLoading = {props.jobs.Loading}
+                errMess = {props.jobs.ErrMess}/>
 
-    render() {
-        return (
-            <div>Esto es el Cv</div>
-         );
-    }
+        </div>
+    );
 }
 
 export default Cv;

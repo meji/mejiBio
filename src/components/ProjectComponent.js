@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Project extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {}
-    }
 
-    render() {
-        return (
-            <div>Esto es el Project</div>
-         );
-    }
+function Project(props){
+    return (
+        <div className="Proyect-view">
+            <h2>{props.name}</h2>
+            <p>{props.charge}</p>
+            <p>{props.description}</p>
+            <p>{props.client}</p>
+            <p>{props.date}</p>
+        </div>
+    )
 }
 
-export default Project;
+export default Project
