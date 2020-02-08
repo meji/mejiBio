@@ -145,7 +145,7 @@ export const addMessage = (message) => ({
     payload: message
 })
 
-export const postMessage= (firstname, lastname, telnum, email, agree, contactType, messageText) => (dispatch) => {
+export const postMessage= (firstname, lastname, telnum, email, agree, contactType, messagetext, subject) => (dispatch) => {
     const newMessage = {
         firstname:firstname,
         lastname: lastname,
@@ -153,9 +153,9 @@ export const postMessage= (firstname, lastname, telnum, email, agree, contactTyp
         email:email,
         agree:agree,
         contactType:contactType,
-        messageText: messageText
+        messagetext: messagetext,
+        subject: subject
     }
-    console.log("NewMessage es"+ newMessage)
     newMessage.date = new Date().toISOString();
 
     return fetch(baseUrl + '/create/newmessage', {

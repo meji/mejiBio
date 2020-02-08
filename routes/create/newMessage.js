@@ -1,17 +1,38 @@
 const express = require("express");
 const router = express.Router();
 const Message = require("../../models/Message");
+const nodemailer = require("nodemailer");
+const emailTemplate = require("../../controllers/email/template-email");
 
 
 router.post("/", async (req,res)=>{
+    const transporter = nodemailer.createTransport({
+        service: "Gmail",
+        auth: {
+            user: process.env.USER_NODEMAILER,
+            pass: process.env.PASSWORD_NODEMAILER
+        }
+    });
+    const {firstname, lastname, telnum, email, agree, contactType, messagetext, subject} = req.body;
     try {
-        const {firstname, lastname, telnum, email, agree, contactType, messageText} = req.body;
-        const messageSaved = new Message({firstname, lastname, telnum, email, agree, contactType, messageText});
+
+        const messageSaved = new Message({firstname, lastname, telnum, email, agree, contactType, messagetext, subject});
         await messageSaved.save();
-        return res.status(200).json({message: "Mensaje guardado correctamente"})
     }catch (error) {
         console.log(error);
         res.status(500).json({error: "Hubo un error"});
+    }
+    try{
+        const response = await transporter.sendMail({
+            from: process.env.USER_NODEMAILER,
+            to: process.env.USER_NODEMAILER,
+            subject,
+            text: messagetext,
+            html: emailTemplate({ firstname, lastname, telnum, email, agree, contactType, messagetext, subject })
+        });
+        return res.status(200).json(response);
+    }catch(error){
+
     }
 
 

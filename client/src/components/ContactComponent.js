@@ -22,7 +22,7 @@ class Contact extends Component{
         })
     }
     handleSubmit(values){
-        this.props.postMessage(values.firstname, values.lastname, values.telnum, values.email, values.agree, values.contactType, values.message);
+        this.props.postMessage(values.firstname, values.lastname, values.telnum, values.email, values.agree, values.contactType, values.message, values.subject);
         this.props.resetMessageForm();
     }
     render(){
@@ -52,6 +52,21 @@ class Contact extends Component{
                         <Errors
                             className="text-danger"
                             model=".lastname"
+                            show="touched"
+                            messages={{
+                                required: 'Required',
+                                minLength: "Must be greater than 2 characters",
+                                maxLength: "Must be 15 characters or less"
+                            }}
+                        />
+                    </div>
+                    <div className="form-line">
+                        <Control.text model=".subject" id="subject" name="subject" placeholder="Subject" className="form-control"
+                                      validators={{required, minLength:minLength(3), maxLength: maxLength(15)}}
+                        />
+                        <Errors
+                            className="text-danger"
+                            model=".subject"
                             show="touched"
                             messages={{
                                 required: 'Required',

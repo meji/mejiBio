@@ -21,7 +21,7 @@ const mapStateToProps = state =>{
 
 
 const mapDispatchtoProps = (dispatch) => ({
-    postMessage: (firstname, lastname, telnum, email, agree, contactType, messageText) => {dispatch(postMessage(firstname, lastname, telnum, email, agree, contactType, messageText))},
+    postMessage: (firstname, lastname, telnum, email, agree, contactType, messagetext, subject) => {dispatch(postMessage(firstname, lastname, telnum, email, agree, contactType, messagetext, subject))},
     resetMessageForm: () => {dispatch(actions.reset('message'))},
     fetchBio: () =>{dispatch(fetchBio())},
     fetchJobs: () =>{dispatch(fetchJobs())},

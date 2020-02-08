@@ -8,7 +8,6 @@ const messageSchema = new Schema({
   },
   lastname: {
     type: String,
-    require: [true, { message: "lastname is required" }]
   },
   telnum: {
     type: String,
@@ -20,14 +19,16 @@ const messageSchema = new Schema({
   },
   agree: {
     type: Boolean,
-    required: [true, { message: "agree is required" }],
   },
   contactType: {
     type: String,
   },
-  messageText: {
+  messagetext: {
     type: String,
     required: [true, { message: "Message is required" }],
+  },
+  subject: {
+    type: String
   },
   date: {
     type: Date,

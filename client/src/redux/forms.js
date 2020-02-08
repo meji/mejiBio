@@ -5,5 +5,6 @@ export const InitialMessage = {
     email: '',
     agree: false,
     contactType: 'Tel.',
-    message: ''
+    messagetext: '',
+    subject: ''
 }
