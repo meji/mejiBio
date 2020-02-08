@@ -3,9 +3,9 @@ import {baseUrl} from '../shared/baseUrl'
 
 export const fetchBio = () => (dispatch) => {
     dispatch(bioLoading(true));
-    return fetch('/bio.json')
+    return fetch(baseUrl+'/get/bio')
         .then(response =>{
-                if(response.ok){
+                if(response){
                     return response
                 }else{
                     var error = new Error('Error '+response.status + ': '+ response.statusText)
@@ -18,7 +18,7 @@ export const fetchBio = () => (dispatch) => {
                 throw errmess
             })
         .then(response => response.json())
-        .then(bio => dispatch(addBio(bio)))
+        .then(response => dispatch(addBio(response.data[0])))
         .catch(error=> dispatch(bioFailed(error.message)));
 }
 
@@ -37,7 +37,7 @@ export const addBio = (bio) => ({
 })
 export const fetchProjects = () => (dispatch) => {
     dispatch(projectsLoading(true));
-    return fetch(baseUrl + 'projects')
+    return fetch(baseUrl + '/get/projects')
         .then(response =>{
                 if(response.ok){
                     return response
@@ -52,7 +52,7 @@ export const fetchProjects = () => (dispatch) => {
                 throw errmess
             })
         .then(response => response.json())
-        .then(projects => dispatch(addProjects(projects)))
+        .then(response => dispatch(addProjects(response.data)))
         .catch(error=> dispatch(projectsFailed(error.message)));
 }
 
@@ -72,7 +72,7 @@ export const addProjects = (projects) => ({
 
 export const fetchJobs = () => (dispatch) => {
     dispatch(jobsLoading(true));
-    return fetch(baseUrl + 'jobs')
+    return fetch(baseUrl + '/get/jobs')
         .then(response =>{
                 if(response.ok){
                     return response
@@ -87,7 +87,7 @@ export const fetchJobs = () => (dispatch) => {
                 throw errmess
             })
         .then(response => response.json())
-        .then(jobs => dispatch(addJobs(jobs)))
+        .then(response => dispatch(addJobs(response.data)))
         .catch(error=> dispatch(jobsFailed(error.message)));
 }
 
@@ -106,7 +106,7 @@ export const addJobs = (jobs) => ({
 })
 export const fetchCourses = () => (dispatch) => {
     dispatch(coursesLoading(true));
-    return fetch(baseUrl + 'courses')
+    return fetch(baseUrl + '/get/courses')
         .then(response =>{
                 if(response.ok){
                     return response
@@ -121,7 +121,7 @@ export const fetchCourses = () => (dispatch) => {
                 throw errmess
             })
         .then(response => response.json())
-        .then(courses => dispatch(addCourses(courses)))
+        .then((response)=> dispatch(addCourses(response.data)))
         .catch(error=> dispatch(coursesFailed(error.message)));
 }
 
@@ -145,7 +145,7 @@ export const addMessage = (message) => ({
     payload: message
 })
 
-export const postMessage= (firstname, lastname, telnum, email, agree, contactType, message) => (dispatch) => {
+export const postMessage= (firstname, lastname, telnum, email, agree, contactType, messageText) => (dispatch) => {
     const newMessage = {
         firstname:firstname,
         lastname: lastname,
@@ -153,20 +153,20 @@ export const postMessage= (firstname, lastname, telnum, email, agree, contactTyp
         email:email,
         agree:agree,
         contactType:contactType,
-        message: message
+        messageText: messageText
     }
     newMessage.date = new Date().toISOString();
 
-    return fetch(baseUrl + 'new-message', {
+    return fetch(baseUrl + '/create/newmessage', {
         method: 'POST',
         body: JSON.stringify(newMessage),
         headers: {
             'Content-type': 'application/json'
-        },
-        credentials: 'same-origin'
+        }
     })
         .then(response =>{
                 if(response.ok){
+                    console.log(`la respuesta es ${response}`)
                     return response
                 }else{
                     var error = new Error('Error '+response.status + ': '+ response.statusText)

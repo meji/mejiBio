@@ -1,43 +1,44 @@
 {
   "name": "mejibio",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "fontawesome": "^5.6.3",
-    "node-sass": "^4.13.1",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-popper": "^1.3.7",
-    "react-redux": "^7.1.3",
-    "react-redux-form": "^1.16.14",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "3.3.1",
-    "redux": "^4.0.5",
-    "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0"
-  },
+  "version": "1.0.0",
+  "description": "Meji Bio Page",
+  "main": "server.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "client-install": "npm install --prefix client",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meji/mejiBio.git"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "keywords": [
+    "Meji",
+    "Bio",
+    "React"
+  ],
+  "author": "Jesús Martín Mejías",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/meji/mejiBio/issues"
+  },
+  "homepage": "https://github.com/meji/mejiBio#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.7",
+    "concurrently": "^5.1.0",
+    "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
+    "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
+    "express": "~4.16.1",
+    "express-fileupload": "^1.1.6",
+    "http-errors": "~1.6.3",
+    "mongoose": "^5.8.6",
+    "mongoose-findorcreate": "^3.0.0",
+    "nodemailer": "^6.4.2"
   }
 }

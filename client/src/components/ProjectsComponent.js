@@ -15,7 +15,7 @@ function Project({project}){
 
 function Projects(props) {
     const projects = props.projects.map((project)=> {
-            return (<Project project={project} key={project.id}/>)
+            return (<Project project={project} key={project._id}/>)
     });
     if(props.projectsLoading){
         return(

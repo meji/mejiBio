@@ -13,7 +13,7 @@ function Job({job}) {
 
 function Jobs(props){
     const courses = props.courses.map((job) =>{
-        return <Job job={job} key={job.id} />
+        return <Job job={job} key={job._id} />
     });
     return(
         <div>

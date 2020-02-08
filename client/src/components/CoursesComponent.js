@@ -13,7 +13,7 @@ function Course({course}) {
 
 function Courses(props){
     const courses = props.courses.map((course) =>{
-        return <Course course={course} key={course.id} />
+        return <Course course={course} key={course._id} />
     });
 
 

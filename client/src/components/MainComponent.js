@@ -4,7 +4,6 @@ import Footer from './FooterComponent';
 import Home from './HomeComponent';
 import Project from './ProjectComponent';
 import Projects from './ProjectsComponent';
-import Contact from './ContactComponent';
 import Cv from './CvComponent';
 import {Switch, Route, Redirect, withRouter} from 'react-router-dom'
 import {connect} from 'react-redux';
@@ -22,7 +21,7 @@ const mapStateToProps = state =>{
 
 
 const mapDispatchtoProps = (dispatch) => ({
-    postMessage: (firstname, lastname, telnum, email, agree, contactType, message) => {dispatch(postMessage(firstname, lastname, telnum, email, agree, contactType, message))},
+    postMessage: (firstname, lastname, telnum, email, agree, contactType, messageText) => {dispatch(postMessage(firstname, lastname, telnum, email, agree, contactType, messageText))},
     resetMessageForm: () => {dispatch(actions.reset('message'))},
     fetchBio: () =>{dispatch(fetchBio())},
     fetchJobs: () =>{dispatch(fetchJobs())},
@@ -38,9 +37,6 @@ const ProjectWithId = ({match}) =>{
 }
 
 class Main extends Component{
-    constructor(props){
-        super(props);
-    }
     componentDidMount() {
         this.props.fetchBio();
         this.props.fetchJobs();
@@ -61,8 +57,9 @@ class Main extends Component{
                             projects={this.props.projects.projects.filter(project => project.featured === true)}
                             projectsLoading={this.props.projects.isLoading}
                             projectsErrMess={this.props.projects.errMess}
+                            postMessage= {this.props.postMessage}
                             resetMessageForm={this.props.resetMessageForm}
-                            postMessage= {this.props.postMessage} />}/>
+                            />}/>
                         />}/>
                         <Route exact path="/cv" component={()=><Cv
                             projects={this.props.projects.projects.filter(project => project.featured === true)}
@@ -80,7 +77,7 @@ class Main extends Component{
                             projectsLoading={this.props.projects.isLoading}
                             projectsErrMess={this.props.projects.errMess}
                         />}/>
-                        <Route path="/menu/:projectId" component={ProjectWithId}/>
+                        <Route path="/projects/:projectId" component={ProjectWithId}/>
                         <Redirect to="/"/>
                     </Switch>
                 </main>

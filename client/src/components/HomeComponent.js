@@ -37,8 +37,9 @@ function Home(props) {
                 isLoading = {props.projectsLoading}
                 errMess = {props.projectsErrMess}/>
             <Contact
+                postMessage= {props.postMessage}
                 resetMessageForm={props.resetMessageForm}
-                postMessage= {props.postMessage} />
+                 />
         </>
     );
 }
