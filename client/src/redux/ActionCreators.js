@@ -155,18 +155,18 @@ export const postMessage= (firstname, lastname, telnum, email, agree, contactTyp
         contactType:contactType,
         messageText: messageText
     }
+    console.log("NewMessage es"+ newMessage)
     newMessage.date = new Date().toISOString();
 
     return fetch(baseUrl + '/create/newmessage', {
         method: 'POST',
-        body: JSON.stringify(newMessage),
+        body: JSON.stringify({newMessage}),
         headers: {
             'Content-type': 'application/json'
         }
     })
         .then(response =>{
                 if(response.ok){
-                    console.log(`la respuesta es ${response}`)
                     return response
                 }else{
                     var error = new Error('Error '+response.status + ': '+ response.statusText)
@@ -177,7 +177,7 @@ export const postMessage= (firstname, lastname, telnum, email, agree, contactTyp
             error => {
                 throw error
             })
-        .then(response => response.json())
+        // .then(response => response.json())
         .then(response =>dispatch(addMessage(response)))
         .catch(error => {
             console.log('Post message:'+ error.message)
