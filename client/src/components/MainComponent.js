@@ -4,7 +4,7 @@ import Footer from './FooterComponent';
 import Home from './HomeComponent';
 import Project from './ProjectComponent';
 import Projects from './ProjectsComponent';
-import LoginGoogle from './LoginGoogle';
+import Admin from './AdminComponent'
 import Cv from './CvComponent';
 import {Switch, Route, Redirect, withRouter, BrowserRouter} from 'react-router-dom'
 import {connect} from 'react-redux';
@@ -41,15 +41,6 @@ const ProjectWithId = ({match}) =>{
 
 class Main extends Component{
 
-    componentWillMount() {
-        console.log(this.props.location)
-        const query = queryString.parse(this.props.location.search);
-        if (query.token) {
-            window.localStorage.setItem("jwt", query.token);
-            this.props.history.push("/");
-        }
-    }
-    
     componentDidMount() {
         this.props.fetchBio();
         this.props.fetchJobs();
@@ -91,6 +82,7 @@ class Main extends Component{
                             projectsErrMess={this.props.projects.errMess}
                         />}/>
                         <Route path="/projects/:projectId" component={ProjectWithId}/>
+                        <Route path="/admin" component={Admin}/>
                         <Redirect to="/"/>
                     </Switch>
                 </main>

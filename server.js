@@ -16,7 +16,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use(express.static(__dirname + '../public'));
-app.set("view engine", "jade");
+app.set('view engine', 'jsx');
+app.engine('jsx', require('express-react-views').createEngine());
 
 //Para cross domain:
 app.use(cors());

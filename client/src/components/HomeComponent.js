@@ -2,7 +2,6 @@ import React from 'react';
 import Contact from './ContactComponent';
 import Projects from "./ProjectsComponent";
 import {Loading} from './LoadingComponent'
-import LoginGoogle from "./LoginGoogle";
 function Hero ({bio, isLoading, errMess}) {
     if(isLoading){
             return(
@@ -33,7 +32,6 @@ function Home(props) {
                 bio={props.bio}
                 isLoading = {props.bioLoading}
                 errMess = {props.bioErrMess}/>
-            <LoginGoogle/>
             <Projects
                 projects={props.projects}
                 isLoading = {props.projectsLoading}

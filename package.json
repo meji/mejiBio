@@ -38,6 +38,7 @@
     "express": "~4.16.1",
     "express-fileupload": "^1.1.6",
     "express-react-views": "^0.11.0",
+    "hbs": "^4.1.0",
     "http-errors": "~1.6.3",
     "jade": "^1.11.0",
     "mongoose": "^5.8.6",
