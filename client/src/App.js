@@ -2,14 +2,17 @@ import React,{Component} from 'react';
 import './App.css';
 import Main from './components/MainComponent';
 import{BrowserRouter} from 'react-router-dom';
+import queryString from "query-string";
 import {Provider} from 'react-redux';
 import {ConfigureStore} from './redux/ConfigureStore';
 const store = ConfigureStore();
 
+
+
 class App extends Component {
     state = {
         data: null
-    };
+    }
     componentDidMount() {
         // Call our fetch function below once the component mounts
         this.callBackendAPI()

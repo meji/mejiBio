@@ -12,5 +12,6 @@ router.get("/", async (req,res)=>{
         res.status(500).json({error: "Hubo un error"});
     }
 });
+router.use("/new", require('./new'))
 
 module.exports = router;

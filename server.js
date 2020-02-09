@@ -7,7 +7,7 @@ const port = process.env.PORT || 5000;
 const  cors = require('cors');
 
 const app = express();
-
+require("./passport/config")(app);
 // console.log that your server is up and running
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
@@ -15,15 +15,19 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname + '../public'));
+app.set("view engine", "jade");
+
+//Para cross domain:
 app.use(cors());
+
+
 // create a GET route
 app.get('/express_backend', (req, res) => {
     res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' });
 });
 
-app.use('/create', require('./routes/create'));
-app.use('/get', require('./routes/get'));
+app.use('/', require('./routes'));
 
 // error handler
 app.use(function(err, req, res, next) {

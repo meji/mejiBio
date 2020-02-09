@@ -3,7 +3,7 @@ import {baseUrl} from '../shared/baseUrl'
 
 export const fetchBio = () => (dispatch) => {
     dispatch(bioLoading(true));
-    return fetch(baseUrl+'/get/bio')
+    return fetch(baseUrl+'/bio')
         .then(response =>{
                 if(response){
                     return response
@@ -37,7 +37,7 @@ export const addBio = (bio) => ({
 })
 export const fetchProjects = () => (dispatch) => {
     dispatch(projectsLoading(true));
-    return fetch(baseUrl + '/get/projects')
+    return fetch(baseUrl + '/projects')
         .then(response =>{
                 if(response.ok){
                     return response
@@ -72,7 +72,7 @@ export const addProjects = (projects) => ({
 
 export const fetchJobs = () => (dispatch) => {
     dispatch(jobsLoading(true));
-    return fetch(baseUrl + '/get/jobs')
+    return fetch(baseUrl + '/jobs')
         .then(response =>{
                 if(response.ok){
                     return response
@@ -106,7 +106,7 @@ export const addJobs = (jobs) => ({
 })
 export const fetchCourses = () => (dispatch) => {
     dispatch(coursesLoading(true));
-    return fetch(baseUrl + '/get/courses')
+    return fetch(baseUrl + '/courses')
         .then(response =>{
                 if(response.ok){
                     return response
@@ -158,7 +158,7 @@ export const postMessage= (firstname, lastname, telnum, email, agree, contactTyp
     }
     newMessage.date = new Date().toISOString();
 
-    return fetch(baseUrl + '/create/newmessage', {
+    return fetch(baseUrl + '/messages/new', {
         method: 'POST',
         body: JSON.stringify({newMessage}),
         headers: {
@@ -180,8 +180,8 @@ export const postMessage= (firstname, lastname, telnum, email, agree, contactTyp
         // .then(response => response.json())
         .then(response =>dispatch(addMessage(response)))
         .catch(error => {
-            console.log('Post message:'+ error.message)
-            alert('your message could not be posted\nError:' + error.message)
+            console.log('Post messages:'+ error.message)
+            alert('your messages could not be posted\nError:' + error.message)
         })
 
 }

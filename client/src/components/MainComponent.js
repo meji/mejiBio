@@ -4,11 +4,13 @@ import Footer from './FooterComponent';
 import Home from './HomeComponent';
 import Project from './ProjectComponent';
 import Projects from './ProjectsComponent';
+import LoginGoogle from './LoginGoogle';
 import Cv from './CvComponent';
-import {Switch, Route, Redirect, withRouter} from 'react-router-dom'
+import {Switch, Route, Redirect, withRouter, BrowserRouter} from 'react-router-dom'
 import {connect} from 'react-redux';
-import {fetchBio, fetchJobs, fetchProjects, fetchCourses, postMessage} from '../redux/ActionCreators'
+import {fetchBio, fetchJobs, fetchProjects, fetchCourses, postMessage, loginGoogle} from '../redux/ActionCreators'
 import {actions} from 'react-redux-form'
+import queryString from "query-string";
 
 const mapStateToProps = state =>{
     return {
@@ -16,6 +18,7 @@ const mapStateToProps = state =>{
         jobs: state.jobs,
         projects : state.projects,
         courses : state.courses,
+        token: state.token
     }
 }
 
@@ -26,7 +29,7 @@ const mapDispatchtoProps = (dispatch) => ({
     fetchBio: () =>{dispatch(fetchBio())},
     fetchJobs: () =>{dispatch(fetchJobs())},
     fetchProjects: () =>{dispatch(fetchProjects())},
-    fetchCourses: () =>{dispatch(fetchCourses())}
+    fetchCourses: () =>{dispatch(fetchCourses())},
 })
 
 
@@ -37,6 +40,16 @@ const ProjectWithId = ({match}) =>{
 }
 
 class Main extends Component{
+
+    componentWillMount() {
+        console.log(this.props.location)
+        const query = queryString.parse(this.props.location.search);
+        if (query.token) {
+            window.localStorage.setItem("jwt", query.token);
+            this.props.history.push("/");
+        }
+    }
+    
     componentDidMount() {
         this.props.fetchBio();
         this.props.fetchJobs();

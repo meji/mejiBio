@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const NewJob = require("../../models/Job");
+const New = require("../../models/Job");
 
 
 router.post("/", async (req,res)=>{
     try {
         const {name, description, company, dateInit, dateEnd} = req.body;
-        const job = new NewJob({name, description, company, dateInit, dateEnd});
+        const job = new New({name, description, company, dateInit, dateEnd});
         await job.save();
         return res.status(200).json({message: "Trabajo creado correctamente"})
     }catch (error) {
