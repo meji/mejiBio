@@ -4,19 +4,25 @@ import {Bio} from './bio';
 import {Jobs} from './jobs';
 import {Projects} from './projects';
 import {Courses} from './courses';
+import {Authenticated} from './authenticated';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
-import { InitialMessage } from './forms';
+import {InitialMessage, InitialCourse, InitialBio, InitialJob, InitialProject} from './forms';
 
 export const ConfigureStore = () => {
     const store = createStore(
         combineReducers({
-            bio: Bio,
+            bios: Bio,
             jobs: Jobs,
             projects: Projects,
             courses: Courses,
+            authenticated: Authenticated,
             ...createForms({
-                message: InitialMessage
+                message: InitialMessage,
+                course: InitialCourse,
+                bio: InitialBio,
+                project: InitialProject,
+                job: InitialJob
             })
         }),
         applyMiddleware(thunk, logger)

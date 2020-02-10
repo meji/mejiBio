@@ -5,6 +5,7 @@ const New = require("../../models/Course");
 
 router.post("/", async (req,res)=>{
     try {
+        console.log("Body"+JSON.stringify(req.body))
         const {name, description, school, dateInit, dateEnd} = req.body;
         const course = new New({name, description, school, dateInit, dateEnd});
         await course.save();
@@ -13,7 +14,6 @@ router.post("/", async (req,res)=>{
         console.log(error);
         res.status(500).json({error: "Hubo un error"});
     }
-
 
 
 });

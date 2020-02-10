@@ -2,7 +2,7 @@ import React from 'react';
 import Contact from './ContactComponent';
 import Projects from "./ProjectsComponent";
 import {Loading} from './LoadingComponent'
-function Hero ({bio, isLoading, errMess}) {
+function Hero ({bios, isLoading, errMess}) {
     if(isLoading){
             return(
                 <Loading/>
@@ -16,10 +16,9 @@ function Hero ({bio, isLoading, errMess}) {
     return(
 
         <div>
-            {console.log(bio)}
-            <p>Name {bio.name}</p>
-            <p><img src={bio.pic} alt={bio.name} title={bio.name}/></p>
-            <p>{bio.bio}</p>
+            <p>Name {bios.name}</p>
+            <p><img src={bios.img} alt={bios.name} title={bios.name}/></p>
+            <p>{bios.biotext}</p>
         </div>
     )
 }
@@ -29,7 +28,7 @@ function Home(props) {
     return (
         <>
             <Hero
-                bio={props.bio}
+                bios={props.bios}
                 isLoading = {props.bioLoading}
                 errMess = {props.bioErrMess}/>
             <Projects

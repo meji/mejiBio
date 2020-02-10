@@ -15,12 +15,10 @@ const jobSchema = new Schema({
     require: [true, { message: "school is required" }],
   },
   dateInit: {
-    type: Date,
-    default: Date.now
+    type: String,
   },
   dateEnd:{
-      type: Date,
-      default: Date.now
+      type: String,
   }
 });
 

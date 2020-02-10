@@ -8,6 +8,7 @@ router.use('/jobs', require('./jobs'));
 router.use('/projects', require('./projects'));
 router.use('/messages', require('./messages'));
 router.use('/auth', require('./auth'));
+router.use('/admin', require('./admin'));
 
 module.exports = router
 

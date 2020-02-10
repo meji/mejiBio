@@ -15,8 +15,7 @@ const projectSchema = new Schema({
     require: [true, { message: "school is required" }],
   },
   date: {
-    type: Date,
-    default: Date.now
+    type: String,
   },
   description: {
     type: String,

@@ -31,9 +31,9 @@ export const bioFailed = (errmess) => ({
     payload: errmess
 })
 
-export const addBio = (bio) => ({
+export const addBio = (bios) => ({
     type: ActionTypes.ADD_BIO,
-    payload: bio
+    payload: bios
 })
 export const fetchProjects = () => (dispatch) => {
     dispatch(projectsLoading(true));
@@ -145,6 +145,7 @@ export const addMessage = (message) => ({
     payload: message
 })
 
+
 export const postMessage= (firstname, lastname, telnum, email, agree, contactType, messagetext, subject) => (dispatch) => {
     const newMessage = {
         firstname:firstname,
@@ -160,7 +161,7 @@ export const postMessage= (firstname, lastname, telnum, email, agree, contactTyp
 
     return fetch(baseUrl + '/messages/new', {
         method: 'POST',
-        body: JSON.stringify({newMessage}),
+        body: JSON.stringify(newMessage),
         headers: {
             'Content-type': 'application/json'
         }
@@ -177,7 +178,6 @@ export const postMessage= (firstname, lastname, telnum, email, agree, contactTyp
             error => {
                 throw error
             })
-        // .then(response => response.json())
         .then(response =>dispatch(addMessage(response)))
         .catch(error => {
             console.log('Post messages:'+ error.message)
@@ -185,3 +185,201 @@ export const postMessage= (firstname, lastname, telnum, email, agree, contactTyp
         })
 
 }
+
+export const addAuthentication = (authenticated) => ({
+    type: ActionTypes.ADD_AUTHENTICATION,
+    payload: authenticated
+})
+export const authenticationFailed = (errmess) => ({
+    type: ActionTypes.AUTHENTICATION_FAILED,
+    payload: errmess
+})
+
+export const isAuthenticated = () => (dispatch) => {
+    const token = localStorage.getItem('jwt');
+    return fetch(baseUrl + '/admin?token='+token).then(response =>{
+            if(response.ok){
+                return response
+            }else{
+                var error = new Error('Error '+response.status + ': '+ response.statusText)
+                error.response = response;
+                throw error;
+            }
+        },
+        error => {
+            var errmess = new Error(error.message);
+            throw errmess
+        })
+        .then(response => response.json())
+        .then((response)=> dispatch(addAuthentication(response.data)))
+        .catch(error => {
+            console.log('Authenticacion:'+ error.message)
+            dispatch(authenticationFailed(error.message))
+        })
+}
+
+
+
+
+export const postBio= (name, charge, biotext) => (dispatch) => {
+    const newBio = {
+        name: name,
+        charge: charge,
+        biotext: biotext
+    }
+    console.log("El Bio que se envia es: "+JSON.stringify(newBio))
+    return fetch(baseUrl + '/bio/new', {
+        method: 'POST',
+        body: JSON.stringify(newBio),
+        headers: {
+            'Content-type': 'application/json'
+        }
+    })
+        .then(response =>{
+                if(response.ok){
+                    return response
+                }else{
+                    var error = new Error('Error '+response.status + ': '+ response.statusText)
+                    error.response = response;
+                    throw error;
+                }
+            },
+            error => {
+                throw error
+            })
+        .then(response=>response.json())
+        .then(response =>dispatch(addNBio(response)))
+        .catch(error => {
+            console.log('Post messages:'+ error.message)
+            alert('your Bio could not be posted\nError:' + error.message)
+        })
+
+}
+export const addNBio = (bio) => ({
+    type: ActionTypes.ADD_NBIO,
+    payload: bio
+})
+
+export const postCourse= (name, description, school, dateInit, dateEnd) => (dispatch) => {
+    const newCourse = {
+        name: name,
+        description: description,
+        school: school,
+        dateInit: dateInit,
+        dateEnd: dateEnd
+    }
+    console.log("El curso que se envia es: "+newCourse)
+    return fetch(baseUrl + '/courses/new', {
+        method: 'POST',
+        body: JSON.stringify(newCourse),
+        headers: {
+            'Content-type': 'application/json'
+        }
+    })
+        .then(response =>{
+                if(response.ok){
+                    return response
+                }else{
+                    var error = new Error('Error '+response.status + ': '+ response.statusText)
+                    error.response = response;
+                    throw error;
+                }
+            },
+            error => {
+                throw error
+            })
+        .then(response=>response.json())
+        .then(response =>dispatch(addCourse(response)))
+        .catch(error => {
+            console.log('Post messages:'+ error.message)
+            alert('your course could not be posted\nError:' + error.message)
+        })
+
+}
+export const addCourse = (course) => ({
+    type: ActionTypes.ADD_COURSE,
+    payload: course
+})
+
+export const postJob= (name, description, company, dateInit, dateEnd) => (dispatch) => {
+    const newJob = {
+        name: name,
+        description: description,
+        company: company,
+        dateInit: dateInit,
+        dateEnd: dateEnd
+    }
+    console.log("El curso que se envia es: "+newJob)
+    return fetch(baseUrl + '/jobs/new', {
+        method: 'POST',
+        body: JSON.stringify(newJob),
+        headers: {
+            'Content-type': 'application/json'
+        }
+    })
+        .then(response =>{
+                if(response.ok){
+                    return response
+                }else{
+                    var error = new Error('Error '+response.status + ': '+ response.statusText)
+                    error.response = response;
+                    throw error;
+                }
+            },
+            error => {
+                throw error
+            })
+        .then(response =>dispatch(addJob(response)))
+        .catch(error => {
+            console.log('Post messages:'+ error.message)
+            alert('your job could not be posted\nError:' + error.message)
+        })
+
+}
+export const addJob = (job) => ({
+    type: ActionTypes.ADD_JOB,
+    payload: job
+})
+
+
+export const postProject= (name,  charge, client, date,  description, img) => (dispatch) => {
+    const newProject = {
+        name: name,
+        charge: charge,
+        client: client,
+        date: date,
+        description: description,
+        img: img
+    }
+    console.log("El curso que se envia es: "+newProject)
+    return fetch(baseUrl + '/projects/new', {
+        method: 'POST',
+        body: JSON.stringify(newProject),
+        headers: {
+            'Content-type': 'application/json'
+        }
+    })
+        .then(response =>{
+                if(response.ok){
+                    return response
+                }else{
+                    var error = new Error('Error '+response.status + ': '+ response.statusText)
+                    error.response = response;
+                    throw error;
+                }
+            },
+            error => {
+                throw error
+            })
+        .then(response=>response.json())
+        .then(response =>dispatch(addProject(response)))
+        .catch(error => {
+            console.log('Post messages:'+ error.message)
+            alert('your job could not be posted\nError:' + error.message)
+        })
+
+}
+export const addProject = (project) => ({
+    type: ActionTypes.ADD_PROJECT,
+    payload: project
+})

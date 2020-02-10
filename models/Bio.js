@@ -10,12 +10,12 @@ const bioSchema = new Schema({
     type: String,
     require: [true, { message: "description is required" }]
   },
-  bio: {
+  biotext: {
     type: String,
     require: [true, { message: "school is required" }],
   }
 });
 
-const Bio = mongoose.model("Bio", bioSchema);
+const Biom = mongoose.model("Biom", bioSchema);
 
-module.exports = Bio;
+module.exports = Biom;

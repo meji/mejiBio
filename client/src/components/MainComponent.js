@@ -6,19 +6,18 @@ import Project from './ProjectComponent';
 import Projects from './ProjectsComponent';
 import Admin from './AdminComponent'
 import Cv from './CvComponent';
-import {Switch, Route, Redirect, withRouter, BrowserRouter} from 'react-router-dom'
+import {Switch, Route, Redirect, withRouter} from 'react-router-dom'
 import {connect} from 'react-redux';
-import {fetchBio, fetchJobs, fetchProjects, fetchCourses, postMessage, loginGoogle} from '../redux/ActionCreators'
+import {fetchBio, fetchJobs, fetchProjects, fetchCourses, postMessage, isAuthenticated, postCourse, postBio, postProject, postJob} from '../redux/ActionCreators'
 import {actions} from 'react-redux-form'
-import queryString from "query-string";
 
 const mapStateToProps = state =>{
     return {
-        bio : state.bio,
+        bios : state.bios,
         jobs: state.jobs,
         projects : state.projects,
         courses : state.courses,
-        token: state.token
+        authenticated : state.authenticated
     }
 }
 
@@ -30,6 +29,15 @@ const mapDispatchtoProps = (dispatch) => ({
     fetchJobs: () =>{dispatch(fetchJobs())},
     fetchProjects: () =>{dispatch(fetchProjects())},
     fetchCourses: () =>{dispatch(fetchCourses())},
+    isAuthenticated: ()=>{dispatch(isAuthenticated())},
+    postBio: (name, charge, biotext) => {dispatch(postBio(name, charge, biotext))},
+    resetBioForm: () => {dispatch(actions.reset('bio'))},
+    postCourse: (name, description, school, dateInit, dateEnd) => {dispatch(postCourse(name, description, school, dateInit, dateEnd))},
+    resetCourseForm: () => {dispatch(actions.reset('course'))},
+    postJob: (name, description, company, dateInit, dateEnd) => {dispatch(postJob(name, description, company, dateInit, dateEnd))},
+    resetJobForm: () => {dispatch(actions.reset('job'))},
+    postProject: (name,  charge, client, date,  description, img) => {dispatch(postProject(name,  charge, client, date,  description, img))},
+    resetProjectForm: () => {dispatch(actions.reset('project'))},
 })
 
 
@@ -46,6 +54,7 @@ class Main extends Component{
         this.props.fetchJobs();
         this.props.fetchProjects();
         this.props.fetchCourses();
+        this.props.isAuthenticated();
     }
 
     render() {
@@ -55,9 +64,9 @@ class Main extends Component{
                 <main>
                     <Switch>
                         <Route exact path="/" component={()=> <Home
-                            bio={this.props.bio.bio}
-                            bioLoading={this.props.bio.isLoading}
-                            bioErrMess={this.props.bio.errMess}
+                            bios={this.props.bios.bios}
+                            bioLoading={this.props.bios.isLoading}
+                            bioErrMess={this.props.bios.errMess}
                             projects={this.props.projects.projects.filter(project => project.featured === true)}
                             projectsLoading={this.props.projects.isLoading}
                             projectsErrMess={this.props.projects.errMess}
@@ -82,7 +91,18 @@ class Main extends Component{
                             projectsErrMess={this.props.projects.errMess}
                         />}/>
                         <Route path="/projects/:projectId" component={ProjectWithId}/>
-                        <Route path="/admin" component={Admin}/>
+                        <Route exact path="/admin" component={()=><Admin
+                            authenticated={this.props.authenticated.authenticated}
+                            location={this.props.history}
+                            postBio={this.props.postBio}
+                            resetBioForm={this.props.resetBioForm}
+                            postCourse={this.props.postCourse}
+                            resetCourseForm={this.props.resetCourseForm}
+                            postJob={this.props.postJob}
+                            resetJobForm={this.props.resetJobForm}
+                            postProject={this.props.postProject}
+                            resetProjectForm={this.props.resetProjectForm}
+                        />}/>
                         <Redirect to="/"/>
                     </Switch>
                 </main>

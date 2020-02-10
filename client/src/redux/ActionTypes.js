@@ -11,4 +11,10 @@ export const PROJECTS_LOADING = 'PROJECTS_LOADING';
 export const ADD_PROJECTS = 'ADD_PROJECTS';
 export const PROJECTS_FAILED = 'PROJECTS_FAILED';
 export const ADD_MESSAGE = 'ADD_MESSAGE';
+export const ADD_NBIO= 'ADD_NBIO';
+export const ADD_COURSE = 'ADD_COURSE';
+export const ADD_JOB = 'ADD_JOB';
+export const ADD_PROJECT = 'ADD_PROJECT';
+export const ADD_AUTHENTICATION = 'ADD_AUTHENTICATION';
+export const AUTHENTICATION_FAILED = 'ADD_AUTHENTICATION';
 

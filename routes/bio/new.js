@@ -5,8 +5,8 @@ const NewBio = require("../../models/Bio");
 
 router.post("/", async (req,res)=>{
     try {
-        const {name, charge, bio} = req.body;
-        const bioModel = new NewBio({name, charge, bio});
+        const {name, charge, biotext} = req.body;
+        const bioModel = new NewBio({name, charge, biotext});
         await bioModel.save();
         return res.status(200).json({message: "Bio creada correctamente"})
     }catch (error) {
