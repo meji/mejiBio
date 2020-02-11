@@ -25,6 +25,10 @@ const projectSchema = new Schema({
     type: String,
     require: [true, { message: "school is required" }],
   },
+  logo: {
+    type: String,
+    require: [true, { message: "school is required" }],
+  },
   featured: {
     type: Boolean,
     default: false

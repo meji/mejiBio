@@ -8,8 +8,9 @@ import Admin from './AdminComponent'
 import Cv from './CvComponent';
 import {Switch, Route, Redirect, withRouter} from 'react-router-dom'
 import {connect} from 'react-redux';
-import {fetchBio, fetchJobs, fetchProjects, fetchCourses, postMessage, isAuthenticated, postCourse, postBio, postProject, postJob} from '../redux/ActionCreators'
+import {fetchBio, fetchJobs, fetchProjects, fetchCourses, postMessage, isAuthenticated, postCourse, postBio, postProject, postJob, postImgProject} from '../redux/ActionCreators'
 import {actions} from 'react-redux-form'
+import NewProject from "./adminForms/NewProject";
 
 const mapStateToProps = state =>{
     return {
@@ -17,13 +18,13 @@ const mapStateToProps = state =>{
         jobs: state.jobs,
         projects : state.projects,
         courses : state.courses,
-        authenticated : state.authenticated
+        authenticated : state.authenticated,
     }
 }
 
 
 const mapDispatchtoProps = (dispatch) => ({
-    postMessage: (firstname, lastname, telnum, email, agree, contactType, messagetext, subject) => {dispatch(postMessage(firstname, lastname, telnum, email, agree, contactType, messagetext, subject))},
+    postMessage: (firstname, lastname, telnum, email, messagetext, subject) => {dispatch(postMessage(firstname, lastname, telnum, email,messagetext, subject))},
     resetMessageForm: () => {dispatch(actions.reset('message'))},
     fetchBio: () =>{dispatch(fetchBio())},
     fetchJobs: () =>{dispatch(fetchJobs())},
@@ -36,8 +37,9 @@ const mapDispatchtoProps = (dispatch) => ({
     resetCourseForm: () => {dispatch(actions.reset('course'))},
     postJob: (name, description, company, dateInit, dateEnd) => {dispatch(postJob(name, description, company, dateInit, dateEnd))},
     resetJobForm: () => {dispatch(actions.reset('job'))},
-    postProject: (name,  charge, client, date,  description, img) => {dispatch(postProject(name,  charge, client, date,  description, img))},
-    resetProjectForm: () => {dispatch(actions.reset('project'))},
+    postProject: (name,  charge, client, date,  description, img, token) => {dispatch(postProject(name,  charge, client, date,  description, img, token))},
+    postImgProject: (img, logo, token, name) => {dispatch(postImgProject(img, logo, token, name))},
+    resetProjectForm: () => {dispatch(actions.reset('project'))}
 })
 
 
@@ -102,6 +104,7 @@ class Main extends Component{
                             resetJobForm={this.props.resetJobForm}
                             postProject={this.props.postProject}
                             resetProjectForm={this.props.resetProjectForm}
+                            postImgProject={this.props.postImgProject}
                         />}/>
                         <Redirect to="/"/>
                     </Switch>

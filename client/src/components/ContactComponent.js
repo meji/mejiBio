@@ -22,7 +22,7 @@ class Contact extends Component{
         })
     }
     handleSubmit(values){
-        this.props.postMessage(values.firstname, values.lastname, values.telnum, values.email, values.agree, values.contactType, values.message, values.subject);
+        this.props.postMessage(values.firstname, values.lastname, values.telnum, values.email, values.message, values.subject);
         this.props.resetMessageForm();
     }
     render(){
@@ -104,16 +104,6 @@ class Contact extends Component{
                                 validEmail: 'Invalid Email Address'
                             }}
                         />
-                    </div>
-                    <div className="form-line">
-                        <Control.checkbox model=".agree" name="agree" className="form-check-input"/>{'  '}
-                        <strong>May we contact you?</strong>
-                    </div>
-                    <div className="form-line">
-                        <Control.select model=".contactType" name="contactType" className="form-control" >
-                            <option>Tel.</option>
-                            <option>Email</option>
-                        </Control.select>
                     </div>
                     <div className="form-line">
                         <Control.textarea model=".message" id="message" name="message" rows="12" className="form-control"/>

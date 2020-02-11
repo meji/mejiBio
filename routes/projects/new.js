@@ -1,21 +1,17 @@
 const express = require("express");
 const router = express.Router();
 const New = require("../../models/Project");
-
-
-router.post("/", async (req,res)=>{
+const { isAuthenticated } = require("../../middlewares/authentication");
+router.post("/", isAuthenticated, async (req,res)=>{
     try {
-        const {name, charge, client, date, description, img, featured} = req.body;
-        const project= new New({name, charge, client, date, description, img, featured});
+        const {name, charge, client, date, description} = req.body;
+        const project= new New({name, charge, client, date, description});
         await project.save();
         return res.status(200).json({message: "Proyecto creado correctamente"})
     }catch (error) {
         console.log(error);
         res.status(500).json({error: "Hubo un error"});
     }
-
-
-
 });
 
 module.exports = router;

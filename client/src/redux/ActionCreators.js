@@ -146,14 +146,12 @@ export const addMessage = (message) => ({
 })
 
 
-export const postMessage= (firstname, lastname, telnum, email, agree, contactType, messagetext, subject) => (dispatch) => {
+export const postMessage= (firstname, lastname, telnum, email, messagetext, subject) => (dispatch) => {
     const newMessage = {
         firstname:firstname,
         lastname: lastname,
         telnum: telnum,
         email:email,
-        agree:agree,
-        contactType:contactType,
         messagetext: messagetext,
         subject: subject
     }
@@ -342,22 +340,21 @@ export const addJob = (job) => ({
 })
 
 
-export const postProject= (name,  charge, client, date,  description, img) => (dispatch) => {
+export const postProject= (name, charge, client, date,  description,  token) => (dispatch) => {
     const newProject = {
         name: name,
         charge: charge,
         client: client,
         date: date,
         description: description,
-        img: img
     }
     console.log("El curso que se envia es: "+newProject)
-    return fetch(baseUrl + '/projects/new', {
+    return fetch(baseUrl + '/projects/new?token='+token, {
         method: 'POST',
         body: JSON.stringify(newProject),
         headers: {
             'Content-type': 'application/json'
-        }
+        },
     })
         .then(response =>{
                 if(response.ok){
@@ -382,4 +379,39 @@ export const postProject= (name,  charge, client, date,  description, img) => (d
 export const addProject = (project) => ({
     type: ActionTypes.ADD_PROJECT,
     payload: project
+})
+
+export const postImgProject= (img, logo, token, name) => (dispatch) => {
+    console.log(logo[0])
+    const formData = new FormData();
+    formData.append('image', img[0]);
+    formData.append('logo', logo[0])
+    return fetch(baseUrl + `/projects/newimg/?name=${name}&token=${token}`, {
+        method: 'POST',
+        body: formData
+    })
+        .then(response =>{
+                if(response.ok){
+                    return response
+                }else{
+                    var error = new Error('Error '+response.status + ': '+ response.statusText)
+                    error.response = response;
+                    throw error;
+                }
+            },
+            error => {
+                throw error
+            })
+        .then(response=>response.json())
+        .then(response =>dispatch(addProjectImg(response)))
+        .catch(error => {
+            console.log('Post messages:'+ error.message)
+            alert('your job could not be posted\nError:' + error.message)
+        })
+
+}
+
+export const addProjectImg = (img) => ({
+    type: ActionTypes.ADD_IMGPROJECT,
+    payload: img
 })

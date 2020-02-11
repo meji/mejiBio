@@ -13,10 +13,10 @@ router.post("/", async (req,res)=>{
             pass: process.env.PASSWORD_NODEMAILER
         }
     });
-    const {firstname, lastname, telnum, email, agree, contactType, messagetext, subject} = req.body;
+    const {firstname, lastname, telnum, email, messagetext, subject} = req.body;
     try {
 
-        const messageSaved = new Message({firstname, lastname, telnum, email, agree, contactType, messagetext, subject});
+        const messageSaved = new Message({firstname, lastname, telnum, email, messagetext, subject});
         await messageSaved.save();
     }catch (error) {
         console.log(error);
@@ -28,7 +28,7 @@ router.post("/", async (req,res)=>{
             to: process.env.USER_NODEMAILER,
             subject,
             text: messagetext,
-            html: emailTemplate({ firstname, lastname, telnum, email, agree, contactType, messagetext, subject })
+            html: emailTemplate({ firstname, lastname, telnum, email, messagetext, subject })
         });
         return res.status(200).json(response);
     }catch(error){

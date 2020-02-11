@@ -5,6 +5,9 @@ const cookieParser = require('cookie-parser');
 const mongoose = require("mongoose");
 const port = process.env.PORT || 5000;
 const  cors = require('cors');
+var fileupload = require("express-fileupload");
+
+
 
 const app = express();
 require("./passport/config")(app);
@@ -14,7 +17,7 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-
+app.use(fileupload());
 app.use(express.static(__dirname + '../public'));
 app.set('view engine', 'jsx');
 app.engine('jsx', require('express-react-views').createEngine());

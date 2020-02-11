@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
-import queryString from "query-string";
-import AdminForms from "./CreateFormsComponent";
+import queryString from 'query-string';
+import  NewBio from './adminForms/NewBio'
+import  NewJob from './adminForms/NewJob'
+import  NewCourse from './adminForms/NewCourse'
+import  NewProject from './adminForms/NewProject'
 
 class Admin extends Component{
     constructor(props) {
@@ -24,15 +27,21 @@ class Admin extends Component{
             return (
                 <>
                     <h1> Autenticado</h1>
-                    <AdminForms
+                    <NewBio
                         postBio={this.props.postBio}
-                        resetBioForm={this.props.resetBioForm}
+                        resetBioForm={this.props.resetBioForm}/>
+                    <NewCourse
                         postCourse={this.props.postCourse}
                         resetCourseForm={this.props.resetCourseForm}
+                    />
+                    <NewJob
                         postJob={this.props.postJob}
                         resetJobForm={this.props.resetJobForm}
+                    />
+                    <NewProject
                         postProject={this.props.postProject}
                         resetProjectForm={this.props.resetProjectForm}
+                        postImgProject={this.props.postImgProject}
                     />
                     <button onClick={this.logout}>Logout</button>
                 </>

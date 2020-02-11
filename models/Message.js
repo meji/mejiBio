@@ -17,12 +17,6 @@ const messageSchema = new Schema({
     type: String,
     require: [true, { message: "email is required" }],
   },
-  agree: {
-    type: Boolean,
-  },
-  contactType: {
-    type: String,
-  },
   messagetext: {
     type: String,
     required: [true, { message: "Message is required" }],

@@ -3,8 +3,6 @@ export const InitialMessage = {
     lastname: '',
     telnum: '',
     email: '',
-    agree: false,
-    contactType: 'Tel.',
     messagetext: '',
     subject: ''
 }
@@ -35,5 +33,6 @@ export const InitialProject = {
     client: '',
     date: '',
     description: '',
-    img:''
+    img:'',
+    logo:''
 }
