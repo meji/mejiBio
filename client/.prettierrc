@@ -1,8 +1,5 @@
 {
-  "extends": [
-    "plugin:prettier/recommended",
-    "prettier/flowtype",
-    "prettier/react",
-    "prettier/standard"
-  ]
+  "semi": false,
+  "singleQuote": true,
+  "printWidth": 140
 }
