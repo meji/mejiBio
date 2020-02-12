@@ -2,13 +2,13 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const bioSchema = new Schema({
-  name: {
+  position: {
     type: String,
-    require: [true, { message: "name is required" }]
+    require: [true, { message: "position is required" }]
   },
-  charge: {
+  claim: {
     type: String,
-    require: [true, { message: "description is required" }]
+    require: [true, { message: "claim is required" }]
   },
   biotext: {
     type: String,

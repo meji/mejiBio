@@ -1,6 +1,6 @@
-import {Control, Errors, Form, Field, actions} from "react-redux-form";
+import {Control, Errors, Form} from "react-redux-form";
 import React, {Component} from "react";
-import {required, maxLength, minLength, isNumber, validEmail} from '../../utils/validations';
+import {required, maxLength, minLength} from '../../utils/validations';
 
 
 class NewProject extends Component{
@@ -11,18 +11,12 @@ class NewProject extends Component{
             randomLogo: Math.floor(Math.random()*10000000)
         }
     }
-    handleSubmitProject(values, img, logo) {
+    handleSubmitProject(values) {
         const token = window.localStorage.getItem("jwt");
-        this.props.postProject(values.name, values.charge, values.client, values.date,  values.description, token, this.props.postImgProject(values.img, values.logo, token, values.name))
+        this.props.postProject(values.name, values.charge, values.client, values.date,  values.description, token, values.url, this.props.postImgProject(values.img, values.logo, token, values.name))
         this.props.resetProjectForm();
         this.setState({randomImg: Math.floor(Math.random()*1000)})
         this.setState({randomLogo:  Math.floor(Math.random()*1000)})
-    }
-    manageImg(e){
-        this.setState({img:e.target.files[0]})
-    }
-    manageLogo(e){
-        this.setState({logo:e.target.files[0]})
     }
     render(){
     return(<>
@@ -30,7 +24,7 @@ class NewProject extends Component{
             <Form model="project" onSubmit={(values) => this.handleSubmitProject(values)}>
                 <div className="form-line">
                     <Control.text model=".name" id="name" name="name" placeholder="Name" className="form-control"
-                                  validators={{required, minLength:minLength(3), maxLength: maxLength(15)}}
+                                  validators={{required, minLength:minLength(3)}}
                     />
                     <Errors
                         className="text-danger"
@@ -44,7 +38,7 @@ class NewProject extends Component{
                 </div>
                 <div className="form-line">
                     <Control.textarea model=".description" id="description" name="description" placeholder="Description" className="form-control"
-                                      validators={{required, minLength:minLength(3), maxLength: maxLength(15)}}
+                                      validators={{required, minLength:minLength(3)}}
                     />
                     <Errors
                         className="text-danger"
@@ -58,7 +52,7 @@ class NewProject extends Component{
                 </div>
                 <div className="form-line">
                     <Control.text model=".charge" id="school" name="charge" placeholder="Charge" className="form-control"
-                                  validators={{required, minLength:minLength(3), maxLength: maxLength(15)}}
+                                  validators={{required, minLength:minLength(3)}}
                     />
                     <Errors
                         className="text-danger"
@@ -86,7 +80,7 @@ class NewProject extends Component{
                 </div>
                 <div className="form-line">
                     <Control.text model=".date" id="date" name="date" placeholder="Date" className="form-control"
-                                  validators={{required, minLength:minLength(3), maxLength: maxLength(15)}}
+                                  validators={{required, minLength:minLength(3)}}
                     />
                     <Errors
                         className="text-danger"
@@ -98,9 +92,23 @@ class NewProject extends Component{
                         }}
                     />
                 </div>
+            <div className="form-line">
+                <Control.text model=".url" id="url" name="url" placeholder="Url" className="form-control"
+                              validators={{required, minLength:minLength(2)}}
+                />
+                <Errors
+                    className="text-danger"
+                    model=".url"
+                    show="touched"
+                    messages={{
+                        required: 'Required',
+                        minLength: "Must be greater than 2 characters",
+                    }}
+                />
+            </div>
                 <div className="form-line">
                     <p>Image</p>
-                    <Control.file model=".img" id="img" name="img" placeholder="Img" className="form-control"  key={this.state.randomImg} onChange={e => {this.manageImg(e)}}
+                    <Control.file model=".img" id="img" name="img" placeholder="Img" className="form-control"  key={this.state.randomImg}
                     />
                     <Errors
                         className="text-danger"
@@ -113,7 +121,7 @@ class NewProject extends Component{
                 </div>
                 <div className="form-line">
                     <p>Logo</p>
-                    <Control.file model=".logo" id="logo" name="logo" placeholder="Logo" className="form-control" key={this.state.randomLogo} onChange={e => {this.manageLogo(e)}}
+                    <Control.file model=".logo" id="logo" name="logo" placeholder="Logo" className="form-control" key={this.state.randomLogo}
                     />
                     <Errors
                         className="text-danger"

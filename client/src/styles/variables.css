@@ -1,0 +1,30 @@
+:root {
+    //structure
+    --breakpoint-sm: 375px;
+    --breakpoint-md: 540px;
+    --breakpoint-lg: 7685px;
+    --breakpoint-xl: 1024px;
+    --breakpoint-xxl: 1280px;
+    --breakpoint-xxxl: 1400px;
+    --gutter: 16px;
+    //fonts
+    --fontSize: 16px;
+    --font-family: 'Avenir', Helvetica, Sans Serif;
+    //Colors
+    --textColor: #666;
+    --textDarkColor: #000;
+    --textLinkColor: #000;
+    --backgroundColor: #fff;
+//--secondaryColor: lab(32.5 38.5 -47.6 / 90%);
+
+}
+//Media queries
+@custom-media --viewport-xs (max-width: var(--breakpoint-sm));
+@custom-media --viewport-sm (min-width: var(--breakpoint-sm));
+@custom-media --viewport-md (min-width: var(--breakpoint-md));
+@custom-media --viewport-lg (min-width: var(--breakpoint-lg));
+@custom-media --viewport-xl (min-width:  var(--breakpoint-xl));
+@custom-media --viewport-xxl (min-width:  var(--breakpoint-xxl));
+@custom-media --viewport-xxl (min-width:  var(--breakpoint-xxxl));
+
+@custom-selector :--heading h1, h2, h3, h4, h5, h6;

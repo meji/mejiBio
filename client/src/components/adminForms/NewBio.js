@@ -4,7 +4,7 @@ import {required, maxLength, minLength, isNumber, validEmail} from '../../utils/
 
 function NewBio(props){
     function   handleSubmitBio(values) {
-        props.postBio(values.name, values.charge, values.biotext);
+        props.postBio(values.position, values.claim, values.biotext);
         props.resetBioForm();
     }
     return(
@@ -12,12 +12,12 @@ function NewBio(props){
             <h2>Nueva Bio</h2>
             <Form model="bio" onSubmit={(values) => handleSubmitBio(values)}>
                 <div className="form-line">
-                    <Control.text model=".name" id="name" name="name" placeholder="Name" className="form-control"
+                    <Control.text model=".position" id="position" name="position" placeholder="Position" className="form-control"
                     />
 
                 </div>
                 <div className="form-line">
-                    <Control.text model=".charge" id="charge" name="charge" placeholder="charge" className="form-control"
+                    <Control.text model=".claim" id="claim" name="claim" placeholder="Claim" className="form-control"
                     />
 
                 </div>

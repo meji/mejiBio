@@ -14,6 +14,7 @@ router.get("/", async (req,res)=>{
 });
 
 router.use("/new", require('./new'))
-router.use("/newimg", require('./newImage'))
+router.use("/newimg", require('./newImages'))
+router.use("/img", require('./img'))
 
 module.exports = router;

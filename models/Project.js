@@ -8,26 +8,29 @@ const projectSchema = new Schema({
   },
   charge: {
     type: String,
-    require: [true, { message: "description is required" }]
+    require: [true, { message: "charge is required" }]
   },
   client: {
     type: String,
-    require: [true, { message: "school is required" }],
+    require: [true, { message: "client is required" }],
   },
   date: {
     type: String,
   },
   description: {
     type: String,
-    require: [true, { message: "school is required" }],
+    require: [true, { message: "description is required" }],
   },
   img: {
     type: String,
-    require: [true, { message: "school is required" }],
+    require: [true, { message: "img is required" }],
   },
   logo: {
     type: String,
-    require: [true, { message: "school is required" }],
+    require: [true, { message: "logo is required" }],
+  },
+  url: {
+    type: String,
   },
   featured: {
     type: Boolean,

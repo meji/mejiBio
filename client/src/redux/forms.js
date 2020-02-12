@@ -8,8 +8,8 @@ export const InitialMessage = {
 }
 
 export const InitialBio = {
-    name: '',
-    charge: '',
+    position: '',
+    claim: '',
     biotext: ''
 }
 
@@ -33,6 +33,7 @@ export const InitialProject = {
     client: '',
     date: '',
     description: '',
+    url: '',
     img: {},
     logo: {}
 }

@@ -3,7 +3,7 @@ import {baseUrl} from '../shared/baseUrl'
 
 export const fetchBio = () => (dispatch) => {
     dispatch(bioLoading(true));
-    return fetch(baseUrl+'/bio')
+    return fetch(baseUrl+'bio')
         .then(response =>{
                 if(response){
                     return response
@@ -37,7 +37,7 @@ export const addBio = (bios) => ({
 })
 export const fetchProjects = () => (dispatch) => {
     dispatch(projectsLoading(true));
-    return fetch(baseUrl + '/projects')
+    return fetch(baseUrl + 'projects')
         .then(response =>{
                 if(response.ok){
                     return response
@@ -72,7 +72,7 @@ export const addProjects = (projects) => ({
 
 export const fetchJobs = () => (dispatch) => {
     dispatch(jobsLoading(true));
-    return fetch(baseUrl + '/jobs')
+    return fetch(baseUrl + 'jobs')
         .then(response =>{
                 if(response.ok){
                     return response
@@ -106,7 +106,7 @@ export const addJobs = (jobs) => ({
 })
 export const fetchCourses = () => (dispatch) => {
     dispatch(coursesLoading(true));
-    return fetch(baseUrl + '/courses')
+    return fetch(baseUrl + 'courses')
         .then(response =>{
                 if(response.ok){
                     return response
@@ -157,7 +157,7 @@ export const postMessage= (firstname, lastname, telnum, email, messagetext, subj
     }
     newMessage.date = new Date().toISOString();
 
-    return fetch(baseUrl + '/messages/new', {
+    return fetch(baseUrl + 'messages/new', {
         method: 'POST',
         body: JSON.stringify(newMessage),
         headers: {
@@ -195,7 +195,7 @@ export const authenticationFailed = (errmess) => ({
 
 export const isAuthenticated = () => (dispatch) => {
     const token = localStorage.getItem('jwt');
-    return fetch(baseUrl + '/admin?token='+token).then(response =>{
+    return fetch(baseUrl + 'admin?token='+token).then(response =>{
             if(response.ok){
                 return response
             }else{
@@ -219,14 +219,14 @@ export const isAuthenticated = () => (dispatch) => {
 
 
 
-export const postBio= (name, charge, biotext) => (dispatch) => {
+export const postBio= (position, claim, biotext) => (dispatch) => {
     const newBio = {
-        name: name,
-        charge: charge,
+        position: position,
+        claim: claim,
         biotext: biotext
     }
     console.log("El Bio que se envia es: "+JSON.stringify(newBio))
-    return fetch(baseUrl + '/bio/new', {
+    return fetch(baseUrl + 'bio/new', {
         method: 'POST',
         body: JSON.stringify(newBio),
         headers: {
@@ -267,7 +267,7 @@ export const postCourse= (name, description, school, dateInit, dateEnd) => (disp
         dateEnd: dateEnd
     }
     console.log("El curso que se envia es: "+newCourse)
-    return fetch(baseUrl + '/courses/new', {
+    return fetch(baseUrl + 'courses/new', {
         method: 'POST',
         body: JSON.stringify(newCourse),
         headers: {
@@ -308,7 +308,7 @@ export const postJob= (name, description, company, dateInit, dateEnd) => (dispat
         dateEnd: dateEnd
     }
     console.log("El curso que se envia es: "+newJob)
-    return fetch(baseUrl + '/jobs/new', {
+    return fetch(baseUrl + 'jobs/new', {
         method: 'POST',
         body: JSON.stringify(newJob),
         headers: {
@@ -340,16 +340,17 @@ export const addJob = (job) => ({
 })
 
 
-export const postProject= (name, charge, client, date,  description,  token) => (dispatch) => {
+export const postProject= (name, charge, client, date,  description,  token, url) => (dispatch) => {
     const newProject = {
         name: name,
         charge: charge,
         client: client,
         date: date,
         description: description,
+        url: url
     }
     console.log("El curso que se envia es: "+newProject)
-    return fetch(baseUrl + '/projects/new?token='+token, {
+    return fetch(baseUrl + 'projects/new?token='+token, {
         method: 'POST',
         body: JSON.stringify(newProject),
         headers: {
@@ -383,8 +384,8 @@ export const addProject = (project) => ({
 
 export const postImgProject= (img, logo, token, name) => (dispatch) => {
     const formData = new FormData();
-    formData.append('image', img);
-    formData.append('logo', logo)
+    formData.append('image', img[0]);
+    formData.append('logo', logo[0])
     return fetch(baseUrl + `/projects/newimg/?name=${name}&token=${token}`, {
         method: 'POST',
         body: formData

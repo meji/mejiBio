@@ -1,5 +1,6 @@
 module.exports = {
     plugins: [
+        require('postcss-media-variables'),
         require('postcss-import'),
         require('postcss-preset-env')({
             stage: 1,

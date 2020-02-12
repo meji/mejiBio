@@ -1,14 +1,13 @@
 import React  from 'react';
 import {Loading} from "./LoadingComponent";
+import {baseUrl} from '../shared/baseUrl'
 
 function Project({project}){
     return (
-        <li>
-            <h2>Proyecto: {project.name}</h2>
-            <p>{project.charge}</p>
-            <p>{project.description}</p>
-            <p>{project.client}</p>
-            <p>{project.date}</p>
+        <li className="featured-proyect">
+            <h2>{project.name}</h2>
+            <img className="logo-img" src={baseUrl+"projects/img/"+project.logo} alt={project.name} title={project.name}/>
+            <img className="main-img" src={baseUrl+"projects/img/"+project.img} alt={project.name} title={project.name}/>
         </li>
     )
 }

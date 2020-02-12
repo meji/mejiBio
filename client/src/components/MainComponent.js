@@ -31,13 +31,13 @@ const mapDispatchtoProps = (dispatch) => ({
     fetchProjects: () =>{dispatch(fetchProjects())},
     fetchCourses: () =>{dispatch(fetchCourses())},
     isAuthenticated: ()=>{dispatch(isAuthenticated())},
-    postBio: (name, charge, biotext) => {dispatch(postBio(name, charge, biotext))},
+    postBio: (position, claim, biotext) => {dispatch(postBio(position, claim, biotext))},
     resetBioForm: () => {dispatch(actions.reset('bio'))},
     postCourse: (name, description, school, dateInit, dateEnd) => {dispatch(postCourse(name, description, school, dateInit, dateEnd))},
     resetCourseForm: () => {dispatch(actions.reset('course'))},
     postJob: (name, description, company, dateInit, dateEnd) => {dispatch(postJob(name, description, company, dateInit, dateEnd))},
     resetJobForm: () => {dispatch(actions.reset('job'))},
-    postProject: (name,  charge, client, date,  description, img, token) => {dispatch(postProject(name,  charge, client, date,  description, img, token))},
+    postProject: (name,  charge, client, date,  description, img, token, url) => {dispatch(postProject(name,  charge, client, date,  description, img, token, url))},
     postImgProject: (img, logo, token, name) => {dispatch(postImgProject(img, logo, token, name))},
     resetProjectForm: () => {dispatch(actions.reset('project'))}
 })
