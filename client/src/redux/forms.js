@@ -33,6 +33,6 @@ export const InitialProject = {
     client: '',
     date: '',
     description: '',
-    img:'',
-    logo:''
+    img: {},
+    logo: {}
 }

@@ -9,7 +9,7 @@ const fs = require("fs");
 
 
 router.post("/", isAuthenticated, async (req,res)=> {
-    const {name} = req.params
+    const {name} = req.query
     if (!req.files) {
         return res.status(400).json({message: "No se ha enviado ningún archivo"});
     }
@@ -67,12 +67,8 @@ router.post("/", isAuthenticated, async (req,res)=> {
         console.log(error);
         res.status(400).json({error});
     }
-
     try {
-        const projectDB = await New.findOneAndUpdate(name, {
-            img: fileNameWithId,
-            logo: fileNameWithIdLogo
-        })
+        const projectDB = await New.findOneAndUpdate({name}, {img: fileNameWithId, logo: fileNameWithIdLogo})
 
         // Recogemos el nombre del archivo anterior para poder eliminarlo de la carpeta y construimos el path
         const oldImagePath = path.resolve(
@@ -88,7 +84,7 @@ router.post("/", isAuthenticated, async (req,res)=> {
         if (fs.existsSync(oldImagePath)) fs.unlinkSync(oldImagePath);
         if (fs.existsSync(oldImagePathLogo)) fs.unlinkSync(oldImagePathLogo);
 
-        return res.status(200).json({message: "Imagenes subida correctamente"});
+        return res.status(200).json({message: "Imagenes subidas correctamente"});
     } catch (error) {
         console.log(error);
         res.status(500).json({message: "Internal server error"});

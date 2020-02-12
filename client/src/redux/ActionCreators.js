@@ -382,10 +382,10 @@ export const addProject = (project) => ({
 })
 
 export const postImgProject= (img, logo, token, name) => (dispatch) => {
-    console.log(logo[0])
+    console.log("Estas son las imágenes"+{logo, img})
     const formData = new FormData();
-    formData.append('image', img[0]);
-    formData.append('logo', logo[0])
+    formData.append('image', img);
+    formData.append('logo', logo)
     return fetch(baseUrl + `/projects/newimg/?name=${name}&token=${token}`, {
         method: 'POST',
         body: formData

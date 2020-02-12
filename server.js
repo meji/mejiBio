@@ -53,5 +53,5 @@ mongoose
         console.log(error)
         throw error;
     });
-
+mongoose.set('useFindAndModify', false);
 module.exports = app;
