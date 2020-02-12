@@ -1,26 +1,20 @@
 import {Control, Errors, Form, Field, actions} from "react-redux-form";
 import React, {Component} from "react";
 import {required, maxLength, minLength, isNumber, validEmail} from '../../utils/validations';
-import {withRouter} from "react-router-dom";
-import {connect} from "react-redux";
 
 
 class NewProject extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            img: {},
-            logo: {},
             randomImg: Math.floor(Math.random()*10000000),
             randomLogo: Math.floor(Math.random()*10000000)
         }
     }
     handleSubmitProject(values, img, logo) {
         const token = window.localStorage.getItem("jwt");
-        this.props.postProject(values.name, values.charge, values.client, values.date,  values.description, token, this.props.postImgProject(img, logo, token, values.name))
+        this.props.postProject(values.name, values.charge, values.client, values.date,  values.description, token, this.props.postImgProject(values.img, values.logo, token, values.name))
         this.props.resetProjectForm();
-        this.setState({img: {}})
-        this.setState({logo:{}})
         this.setState({randomImg: Math.floor(Math.random()*1000)})
         this.setState({randomLogo:  Math.floor(Math.random()*1000)})
     }
@@ -33,7 +27,7 @@ class NewProject extends Component{
     render(){
     return(<>
             <h2>Nuevo Proyecto</h2>
-            <Form model="project" onSubmit={(values) => this.handleSubmitProject(values, this.state.img, this.state.logo)}>
+            <Form model="project" onSubmit={(values) => this.handleSubmitProject(values)}>
                 <div className="form-line">
                     <Control.text model=".name" id="name" name="name" placeholder="Name" className="form-control"
                                   validators={{required, minLength:minLength(3), maxLength: maxLength(15)}}

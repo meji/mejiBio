@@ -382,7 +382,6 @@ export const addProject = (project) => ({
 })
 
 export const postImgProject= (img, logo, token, name) => (dispatch) => {
-    console.log("Estas son las imágenes"+{logo, img})
     const formData = new FormData();
     formData.append('image', img);
     formData.append('logo', logo)
