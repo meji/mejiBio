@@ -16,15 +16,14 @@
     --textLinkColor: #000;
     --hero-bg: #000;
     --backgroundColor: #fff;
-//--secondaryColor: lab(32.5 38.5 -47.6 / 90%);
+    //--secondaryColor: lab(32.5 38.5 -47.6 / 90%);
 }
 @custom-media --viewport-xs (max-width: var(--breakpoint-sm));
 @custom-media --viewport-sm (min-width: var(--breakpoint-sm));
 @custom-media --viewport-md (min-width: var(--breakpoint-md));
 @custom-media --viewport-lg (min-width: var(--breakpoint-lg));
-@custom-media --viewport-xl (min-width:  var(--breakpoint-xl));
-@custom-media --viewport-xxl (min-width:  var(--breakpoint-xxl));
-@custom-media --viewport-xxl (min-width:  var(--breakpoint-xxxl));
-
+@custom-media --viewport-xl (min-width: var(--breakpoint-xl));
+@custom-media --viewport-xxl (min-width: var(--breakpoint-xxl));
+@custom-media --viewport-xxl (min-width: var(--breakpoint-xxxl));
 
 @custom-selector :--heading h1, h2, h3, h4, h5, h6;
