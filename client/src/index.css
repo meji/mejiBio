@@ -92,6 +92,22 @@ Serif;
 img {
     max-width: 100%;
 }
+.letter{display: inline-block;line-height: 1em;}
+.split {
+    position: relative;
+    min-width: 300px;
+    display: block;;
+    min-height: 150px
+}
+.split .letters {
+    font-size: 70%;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    top: 0.3em;
+    right: 0;
+    opacity: 0;
+}
 .container {
     margin: 0 auto;
     max-width: 375px;

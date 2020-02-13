@@ -1,8 +1,9 @@
 import React from 'react';
 import Projects from "./ProjectsComponent";
 import {Loading} from './LoadingComponent'
-
+import  {scrollAnchors, splitTextAnimation} from '../utils/tools'
 function Hero ({bios, isLoading, errMess}) {
+    console.log(scrollAnchors)
     if(isLoading){
             return(
                 <section id="hero" className="v-align t-center screen-height dark-bg ">
@@ -20,9 +21,14 @@ function Hero ({bios, isLoading, errMess}) {
     return(
         <section id="hero" className="v-align t-center screen-height dark-bg ">
             <div className="container">
-                <h1 className="font-secondary" id="split"> Meji<small>&</small></h1>
+                <h1 className="font-secondary" onClick={e => splitTextAnimation(e)}><span className="split" >
+                    <span id="meji"> Meji <small>&</small></span>
+                    <span className="letters letters-1">The heart </span>
+                  <span className="letters letters-2">will show</span>
+                  <span className="letters letters-3">Me</span>
+                </span></h1>
                 <h2 className="position">{bios.position}</h2>
-                <h3 className="claim">{bios.claim}</h3>
+                <h3 className="claim scroll" data-href="#bio" onClick={e => scrollAnchors(e) }>{bios.claim}</h3>
             </div>
         </section>
     )
