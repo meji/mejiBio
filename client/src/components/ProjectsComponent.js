@@ -18,7 +18,11 @@ function Projects(props) {
     });
     if(props.projectsLoading){
         return(
-            <Loading/>
+            <section id="Projects" className="v-align t-center screen-height">
+                <div>
+                    <Loading/>
+                </div>
+            </section>
         );
     }
     else if(props.projectsErrMess) {
@@ -27,12 +31,14 @@ function Projects(props) {
         )
     }
     return(
-        <div>
-            <h2>Projects</h2>
-            <ul>
-                {projects}
-            </ul>
-        </div>
+        <section id="projects" className="v-align t-center screen-height">
+            <div>
+                <h2>Last Projects</h2>
+                <ul className="no-style">
+                    {projects}
+                </ul>
+            </div>
+        </section>
     )
 }
 export default Projects

@@ -1,34 +1,19 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom'
 
 function Header(props) {
     return (
-        <div>
-            <div className="container">
-                <NavLink to="/">
-                    Meji
-                </NavLink>
-                <nav>
-                    <ul>
-                       <li>
-                            <NavLink to="/">
-                                About me
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink to="/cv">
-                                cv
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink to="/projects">
-                            Projects
-                            </NavLink>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
+        <header id="header">
+            <span id="menu-icon">
+                <div></div>
+            </span>
+            <nav>
+                <ul className="no-style">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="cv">Curriculum</a></li>
+                    <li><a href="projects">Projects</a></li>
+                </ul>
+            </nav>
+        </header>
      );
 
 }

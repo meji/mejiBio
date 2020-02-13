@@ -5,14 +5,27 @@ html {
 body {
     background: var(--backgroundColor);
     color: var(--textColor);
-    font-family: var(--font-family);
+    font-family: var(--font-main);
     font-size: var(--fontSize);
     line-height: calc(var(--fontSize) * 1.5);
     overflow-wrap: break-word;
-    padding-inline: calc(var(--fontSize) / 2 + 1px);
+    padding: 0;
+    margin: 0;
 }
 
 a {
     color: var(--textLinkColor);
-    &:hover{text-decoration: underline};
 }
+a:hover{text-decoration: underline}
+
+h1{font-size: 1300%; font-weight: normal;
+    small{font-size: 40%; margin: 0}
+}
+h2{font-family: var(--font-secondary); font-size: 300%}
+ul.no-style{list-style-type: none}
+.font-secondary{font-family: var(--font-secondary)}
+.dark-bg{color: #fff}
+img{max-width: 100%}
+
+
+

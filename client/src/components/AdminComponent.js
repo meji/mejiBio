@@ -4,6 +4,7 @@ import  NewBio from './adminForms/NewBio'
 import  NewJob from './adminForms/NewJob'
 import  NewCourse from './adminForms/NewCourse'
 import  NewProject from './adminForms/NewProject'
+import {baseUrl} from '../shared/baseUrl'
 
 class Admin extends Component{
     constructor(props) {
@@ -51,7 +52,7 @@ class Admin extends Component{
             <>
                 <h1>Admin Page</h1>
                 <p>Debes estar logueado para acceder a esta página</p>
-                <a className="btn" href="http://localhost:5000/auth/google">Login Google</a>
+                <a className="btn" href={baseUrl+"auth/google"}>Login Google</a>
             </>
         )
     }

@@ -1,11 +1,15 @@
 import React from 'react';
-import Contact from './ContactComponent';
 import Projects from "./ProjectsComponent";
 import {Loading} from './LoadingComponent'
+
 function Hero ({bios, isLoading, errMess}) {
     if(isLoading){
             return(
-                <Loading/>
+                <section id="hero" className="v-align t-center screen-height dark-bg ">
+                    <div className="container">
+                        <Loading/>
+                    </div>
+                </section>
             );
         }
         else if(errMess) {
@@ -14,12 +18,54 @@ function Hero ({bios, isLoading, errMess}) {
         )
     }
     return(
-
-        <div>
-            <p>Name {bios.name}</p>
-            <p><img src={bios.img} alt={bios.name} title={bios.name}/></p>
-            <p>{bios.biotext}</p>
-        </div>
+        <section id="hero" className="v-align t-center screen-height dark-bg ">
+            <div className="container">
+                <h1 className="font-secondary" id="split"> Meji<small>&</small></h1>
+                <h2 className="position">{bios.position}</h2>
+                <h3 className="claim">{bios.claim}</h3>
+            </div>
+        </section>
+    )
+}
+function Bios ({bios, isLoading, errMess}) {
+    if(isLoading){
+        return(
+            <section id="bio" className="v-align t-center screen-height">
+                <div className="container">
+                    <div className="v-center">
+                        <Loading/>
+                    </div>
+                </div>
+            </section>
+        );
+    }
+    else if(errMess) {
+        return (
+            <h4>{errMess}</h4>
+        )
+    }
+    return(
+        <section id="bio" className="v-align t-center screen-height">
+            <div className="container">
+                <div className="v-center">
+                    <img className="avatar" src="/img/avatar.png" alt={bios.name} title={bios.name}/>
+                    <p className="bio">{bios.biotext}</p>
+                    <div id="skills">
+                        <p>Designed & developed with Figma &</p>
+                        <ul className="no-style">
+                            <li><a href="https://developer.mozilla.org/es/docs/HTML/HTML5" title="Go to Html5 doc" target="_blank" rel="noopener noreferrer">HTML5</a></li>
+                            <li><a href="https://es.reactjs.org/" title="Go to REACT doc" target="_blank" rel="noopener noreferrer">REACT</a></li>
+                            <li><a href="https://es.redux.js.org/" title="Go to REDUX doc" target="_blank" rel="noopener noreferrer">REDUX</a></li>
+                            <li><a href="https://redux-form.com/8.3.0/" title="Go to REDUX-FORMS doc"target="_blank" rel="noopener noreferrer" >REDUX-FORMS</a></li>
+                            <li><a href="https://expressjs.com/es/" title="Go to EXPRESS doc" target="_blank" rel="noopener noreferrer">EXPRESS</a></li>
+                            <li><a href="https://www.mongodb.com/" title="Go to MONGODB doc"target="_blank" rel="noopener noreferrer" >MONGODB</a></li>
+                            <li><a href="http://www.passportjs.org/" title="Go to PASSPORT JWT doc"target="_blank" rel="noopener noreferrer" >PASSPORT JWT</a></li>
+                            <li><a href="https://postcss.org/" title="Go to POSTCSS doc" target="_blank" rel="noopener noreferrer">POSTCSS</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
     )
 }
 
@@ -31,14 +77,19 @@ function Home(props) {
                 bios={props.bios}
                 isLoading = {props.bioLoading}
                 errMess = {props.bioErrMess}/>
+            <Bios
+                bios={props.bios}
+                isLoading = {props.bioLoading}
+                errMess = {props.bioErrMess}
+            />
             <Projects
                 projects={props.projects}
                 isLoading = {props.projectsLoading}
                 errMess = {props.projectsErrMess}/>
-            <Contact
-                postMessage= {props.postMessage}
-                resetMessageForm={props.resetMessageForm}
-                 />
+            {/*<Contact*/}
+            {/*    postMessage= {props.postMessage}*/}
+            {/*    resetMessageForm={props.resetMessageForm}*/}
+            {/*     />*/}
         </>
     );
 }

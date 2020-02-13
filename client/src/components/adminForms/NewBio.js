@@ -1,6 +1,5 @@
 import {Control, Form} from "react-redux-form";
 import React from "react";
-import {required, maxLength, minLength, isNumber, validEmail} from '../../utils/validations';
 
 function NewBio(props){
     function   handleSubmitBio(values) {

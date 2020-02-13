@@ -10,7 +10,6 @@ import {Switch, Route, Redirect, withRouter} from 'react-router-dom'
 import {connect} from 'react-redux';
 import {fetchBio, fetchJobs, fetchProjects, fetchCourses, postMessage, isAuthenticated, postCourse, postBio, postProject, postJob, postImgProject} from '../redux/ActionCreators'
 import {actions} from 'react-redux-form'
-import NewProject from "./adminForms/NewProject";
 
 const mapStateToProps = state =>{
     return {
@@ -109,7 +108,7 @@ class Main extends Component{
                         <Redirect to="/"/>
                     </Switch>
                 </main>
-                <Footer/>
+                {/*<Footer/>*/}
             </div>
         );
     }

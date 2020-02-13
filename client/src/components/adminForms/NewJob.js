@@ -1,6 +1,6 @@
 import {Control, Errors, Form} from "react-redux-form";
 import React from "react";
-import {required, maxLength, minLength, isNumber, validEmail} from '../../utils/validations';
+import {required, maxLength, minLength} from '../../utils/validations';
 
 function NewJob(props){
     function handleSubmitJob(values) {

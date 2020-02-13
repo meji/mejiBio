@@ -1,42 +1,250 @@
+@font-face {
+    font-family: "Reenie Beanie";
+    font-style: normal;
+    font-weight: 400;
+    src: local("Reenie Beanie"),local(ReenieBeanie),url(//fonts.gstatic.com/s/reeniebeanie/v10/z7NSdR76eDkaJKZJFkkjuvWxXPq1rw.eot?#) format("eot"),url(//fonts.gstatic.com/s/reeniebeanie/v10/z7NSdR76eDkaJKZJFkkjuvWxXPq1qw.woff2) format("woff2"),url(//fonts.gstatic.com/s/reeniebeanie/v10/z7NSdR76eDkaJKZJFkkjuvWxXPq1rQ.woff) format("woff");
+}
 :root {
     --breakpoint-sm: 375px;
     --breakpoint-md: 540px;
     --breakpoint-lg: 7685px;
     --breakpoint-xl: 1024px;
     --breakpoint-xxl: 1280px;
-    --breakpoint-xxl: 1400px;
+    --breakpoint-xxxl: 1400px;
+    --gutter: 16px;
+    /*fonts */
     --fontSize: 16px;
+    --font-main: 'Avenir', Helvetica, Sans Serif;
+    --font-secondary: 'Reenie Beanie', Helvetica, Sans Serif;
+    /*Colors */
     --textColor: #666;
     --textDarkColor: #000;
     --textLinkColor: #000;
+    --hero-bg: #000;
     --backgroundColor: #fff;
-    --font-family: 'Avenir', Helvetica, Sans Serif;
-//--secondaryColor: rgba(102, 51, 153, 0.9);
-
+/*--secondaryColor: lab(32.5 38.5 -47.6 / 90%); */
 }
-
 html {
     overflow-x: hidden;
     overflow-y: auto;
     overflow: hidden auto;
 }
-
 body {
+    background: #fff;
     background: var(--backgroundColor);
-    color: var(--mainColor);
-    font-family: var(--font-family);
+    color: #666;
+    color: var(--textColor);
+    font-family: 'Avenir'
+,
+Helvetica
+,
+Sans
+Serif;
+    font-family: var(--font-main);
+    font-size: 16px;
     font-size: var(--fontSize);
-    line-height: calc(var(--fontSize) * 1.5);
+    line-height: 24px;
+    line-height: calc(var(--fontSize)*1.5);
     overflow-wrap: break-word;
-    padding-inline: calc(var(--fontSize) / 2 + 1px);
+    padding: 0;
+    margin: 0;
 }
-
 a {
-    color: var(--textLinkColor)
+    color: #000;
+    color: var(--textLinkColor);
 }
-
-a:hover{text-decoration: underline};
-
+a:hover{text-decoration: underline}
+h1{font-size: 1300%; font-weight: normal;
+}
+h1 small{font-size: 40%; margin: 0}
+h2{font-family: 'Reenie Beanie'
+,
+Helvetica
+,
+Sans
+Serif;font-family: var(--font-secondary); font-size: 300%}
+ul.no-style{list-style-type: none}
+.font-secondary{font-family: 'Reenie Beanie'
+,
+Helvetica
+,
+Sans
+Serif;font-family: var(--font-secondary)}
+.dark-bg{color: #fff}
+img{max-width: 100%}
 .container{
-    max-width:
+    margin: 0 auto;
+    max-width: 375px;
+    max-width: var(--breakpoint-sm);
+    padding: 16px;
+    padding: var(--gutter);
+}
+@media (min-width: 375px) {
+    .container{
+        max-width: 540px;
+        max-width: var(--breakpoint-md);
+        padding:0 16px;
+        padding:0 var(--gutter);
+    }
+}
+@media (min-width: 375px) {
+    .container{
+        max-width: 540px;
+        max-width: var(--breakpoint-md);
+        padding:0 16px;
+        padding:0 var(--gutter);
+    }
+}
+@media (min-width: 540px) {
+    .container{
+        max-width: 7685px;
+        max-width: var(--breakpoint-lg);
+        padding:0 32px;
+        padding:0 calc(var(--gutter)*2);
+    }
+}
+@media (min-width: 7685px) {
+    .container{
+        max-width: 1024px;
+        max-width: var(--breakpoint-xl);
+        padding:0 64px;
+        padding:0 calc(var(--gutter)*4);
+    }
+}
+@media (min-width:  1024px) {
+    .container{
+        max-width: 1280px;
+        max-width: var(--breakpoint-xxl);
+        padding:0 96px;
+        padding:0 calc(var(--gutter)*6);
+    }
+}
+@media (min-width:  1400px) {
+    .container{
+        max-width: 1400px;
+        max-width: var(--breakpoint-xxxl);
+        padding:0 128px;
+        padding:0 calc(var(--gutter)*8);
+    }
+}
+.screen-height{height: 100vh}
+.v-align{display: flex; align-items: center}
+.t-center{align-content: center; text-align: center;}
+header#header{
+    cursor: pointer;
+    padding: 0;
+    position: absolute;
+    z-index:10;
+    top: 0;
+    left: 0;
+}
+header#header nav{
+        display: none;
+    }
+#menu-icon{width: 30px; height: 40px; display: inline-block; cursor: url('assets/img/arrow2.svg'), move; padding: 32px; padding: calc(var(--gutter)*2);
+}
+#menu-icon div:after{opacity:0}
+#menu-icon:after, #menu-icon:before, #menu-icon div {background-color: #fff; border-radius: 3px; content: ''; display: block; height: 1.5px; margin: 10px 0; transition: all .8s ease-in-out; border-radius: 1px;}
+#menu-icon div{width: 70%}
+/*&:after {transform: translateY(-6px) rotate(-135deg);} */
+#menu-icon:hover div {transform: scaleX(2.3) translateX(22px);position: relative }
+/*&:before {transform: translateY(6px) rotate(135deg);} */
+#menu-icon:hover div:after{content:"Menu"; font-family: 'Reenie Beanie'
+,
+Helvetica
+,
+Sans
+Serif; font-family: var(--font-secondary); font-size: 150%; text-transform: uppercase;  position: absolute; top: -30px;  width: 100px; transform:scaleX(0.4) translateX(-74px); color: #ccc; opacity:1}
+#menu-icon:hover:before {transform: translateY(20px);}
+#menu-icon:hover:after {transform: translateX(75px)}
+/*#hero{background-color: red; background-image:  svg-load('../assets/img/circle.svg')} */
+#hero{background-color: #050505;}
+#hero h1{position: relative; z-index: 2}
+#hero h2:after{content:""; background-image: url('assets/img/meji.png'); background-repeat: no-repeat; background-position:center;  background-size: cover; width: 100vw; height: 100vh; position: absolute; top: 0; left: 0; transition: 10s ; z-index:1; opacity: 0}
+#hero h1:hover + h2:after{opacity: 1; transition: 7s}
+#hero:hover{cursor: url('assets/img/circle.svg'), move;  }
+#hero h1:hover{cursor: url('assets/img/heart.svg'), move; transition: 1s }
+#hero h3.claim:hover{cursor: url('assets/img/arrow-down.svg'), move; transition: 1s ;}
+h2.position{margin-top: 120px; padding: 20px; }
+h3.claim{font-weight: 300; opacity: 0.6; padding-bottom: 150px; margin-bottom: -150px;z-index: 2; position: relative;}
+#bio{text-align: center; position: relative;
+}
+#bio .bio{max-width: 540px;max-width: var(--breakpoint-md); opacity: 1; display: block; transition: 3s}
+#bio .avatar{animation: bounceIn 4s infinite;}
+#bio .avatar:hover ~ .bio{opacity: 0.6; }
+#bio .avatar:hover{animation: zoom 4s infinite alternate;}
+#bio #skills{
+        position: absolute;
+        bottom: 0; padding: 10px;
+        width: 100vw;
+        box-sizing: border-box;
+        left: 0;
+
+    }
+#bio #skills ul{
+            margin: 20px 0 0; font-family: 'Reenie Beanie'
+,
+Helvetica
+,
+Sans
+Serif; font-family: var(--font-secondary); position: relative; transition: 2s; padding: 0;
+        }
+#bio #skills ul li{display: inline-block; font-size: 120%; margin: 10px; transition: 4s;
+            }
+#bio #skills ul li a{cursor: url('assets/img/question.svg'), move; text-decoration: none; color: #666; transition: 5s }
+#bio #skills ul li a:hover{transform: scale(3,3) translateX(20px); transition: 10s; display: inline-block; color: #000}
+#bio #skills ul:hover{
+                transition: 5s;
+                margin-top: 40px;
+            }
+#bio #skills ul:hover li:nth-child(odd){
+                    transform: translateY(-20px); transition: 8s; letter-spacing: 3px; margin: 15px;
+                }
+#bio #skills ul:hover li:nth-child(even){
+                transform: translateY(-40px); transition: 8s; letter-spacing: 6px;
+                }
+#projects div{width: 100%}
+#projects ul{max-height: 80vh; width: 100%; margin: 0; padding: 0;
+    }
+#projects ul .featured-proyect{min-height: 33vh; overflow: hidden; position: relative;
+        }
+#projects ul .featured-proyect h2{font-family: 'Avenir'
+,
+Helvetica
+,
+Sans
+Serif;font-family: var(--font-main); filter:invert(1);  mix-blend-mode: difference; line-height: 1; opacity:0.3}
+#projects ul .featured-proyect:hover{cursor: url('assets/img/arrow.svg'), move}
+#projects ul .featured-proyect:hover h2{filter:invert(50%); transition: 4s;mix-blend-mode: color-dodge;}
+#projects ul .featured-proyect:hover img.logo-img{filter:invert(100%);opacity: 0.6; }
+#projects ul .featured-proyect:hover img.main-img{transition: 10s; top:-40vh; min-height: 100%; }
+#projects ul .featured-proyect .logo-img{max-width: 200px; display: block; margin: 20px auto;}
+#projects ul .featured-proyect .main-img{width: 100vw; height: auto; position: absolute; left: 0; top: 0; z-index: -1; max-width: 140vw; width: auto;}
+@media (min-width: 540px){
+        #projects ul .featured-proyect .main-img{max-width: 100%;}
+        #projects ul .featured-proyect h2{ font-size: 6vw; opacity: 1}
+}
+@keyframes bounceIn{
+    0%{
+        opacity: 1;
+        transform: scale(1) translate3d(0,0,0);
+    }
+    50%{
+        opacity: 0.9;
+        transform: scale(1.1);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    }
+
+}
+@keyframes zoom{
+    0%{
+        transform: scale(1);
+    }
+    100%{
+        transform: scale(1.3);
+    }
+
 }
