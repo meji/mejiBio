@@ -3,9 +3,6 @@ import Projects from "./ProjectsComponent";
 import {Loading} from './LoadingComponent'
 import  {scrollAnchors, animateText} from '../utils/tools'
 function Hero ({bios, isLoading, errMess}) {
-    // useEffect(()=>{
-    //     animation();
-    // })
     if(isLoading){
             return(
                 <section id="hero" className="v-align t-center screen-height dark-bg ">

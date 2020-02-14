@@ -27,53 +27,55 @@ split.scaleOut = 3;
 split.durationIn = 800;
 split.durationOut = 600;
 split.delay = 500;
+const animatione = anime.timeline({ //Removed {loop: true} inside
+});
+
 export const animateText = () => {
-    const animation  = anime.timeline() //Removed {loop: true} inside
-        .add({
-            targets: '.split .meji',
-            opacity: 0,
-            scale: split.scaleOut,
-            duration: split.durationOut,
-            easing: "easeInExpo",
-            delay: 1000
-        })
+    animatione.add({
+        targets: '.split .meji',
+        opacity: 0,
+        scale: split.scaleOut,
+        duration: split.durationOut,
+        easing: "easeInExpo",
+        delay: 1000
+    })
         .add({
             targets: '.split .letters-1',
             opacity: split.opacityIn,
             scale: split.scaleIn,
             duration: split.durationIn
         }).add({
-            targets: '.split .letters-1',
-            opacity: 0,
-            scale: split.scaleOut,
-            duration: split.durationOut,
-            easing: "easeInExpo",
-            delay: split.delay
-        }).add({
-            targets: '.split .letters-2',
-            opacity: split.opacityIn,
-            scale: split.scaleIn,
-            duration: split.durationIn
-        }).add({
-            targets: '.split .letters-2',
-            opacity: 0,
-            scale: split.scaleOut,
-            duration: split.durationOut,
-            easing: "easeInExpo",
-            delay: split.delay
-        }).add({
-            targets: '.split .letters-3',
-            opacity: split.opacityIn,
-            scale: split.scaleIn,
-            duration: split.durationIn
-        }).add({
-            targets: '.split .letters-3',
-            opacity: 0,
-            scale: split.scaleOut,
-            duration: split.durationOut,
-            easing: "easeInExpo",
-            delay: split.delay
-        })
+        targets: '.split .letters-1',
+        opacity: 0,
+        scale: split.scaleOut,
+        duration: split.durationOut,
+        easing: "easeInExpo",
+        delay: split.delay
+    }).add({
+        targets: '.split .letters-2',
+        opacity: split.opacityIn,
+        scale: split.scaleIn,
+        duration: split.durationIn
+    }).add({
+        targets: '.split .letters-2',
+        opacity: 0,
+        scale: split.scaleOut,
+        duration: split.durationOut,
+        easing: "easeInExpo",
+        delay: split.delay
+    }).add({
+        targets: '.split .letters-3',
+        opacity: split.opacityIn,
+        scale: split.scaleIn,
+        duration: split.durationIn
+    }).add({
+        targets: '.split .letters-3',
+        opacity: 0,
+        scale: split.scaleOut,
+        duration: split.durationOut,
+        easing: "easeInExpo",
+        delay: split.delay
+    })
         .add({
             targets: '.split .meji',
             opacity: split.opacityIn,
