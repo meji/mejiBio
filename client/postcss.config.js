@@ -17,6 +17,7 @@ module.exports = {
         require('postcss-current-selector'),
         require('autoprefixer'),
         require('postcss-inline-svg'),
+        require("postcss-selector-not"),
         require('postcss-url')({
             url: "rebase"
         }),

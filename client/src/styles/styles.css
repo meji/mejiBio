@@ -51,7 +51,7 @@ img {
     display: block;;
     min-height: 150px
 }
-.split .letters {
+.split .letters:not(.meji) {
     font-size: 70%;
     position: absolute;
     margin: auto;
@@ -60,3 +60,4 @@ img {
     right: 0;
     opacity: 0;
 }
+.split .meji{opacity: 1}
