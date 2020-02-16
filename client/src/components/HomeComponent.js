@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import Projects from "./ProjectsComponent";
 import {Loading} from './LoadingComponent'
 import  {scrollAnchors, animatione} from '../utils/tools'
