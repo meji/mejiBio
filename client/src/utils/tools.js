@@ -27,61 +27,64 @@ split.scaleOut = 3;
 split.durationIn = 800;
 split.durationOut = 600;
 split.delay = 500;
-const animatione = anime.timeline({ //Removed {loop: true} inside
-});
-
-export const animateText = () => {
-    animatione.add({
-        targets: '.split .meji',
-        opacity: 0,
-        scale: split.scaleOut,
-        duration: split.durationOut,
-        easing: "easeInExpo",
-        delay: 1000
-    })
-        .add({
+const animation = anime.timeline({ autoplay: false , complete: function(anim){console.log(animation)}});
+export const animatione = ()=> {
+    if (animation.completed) {
+        animation.restart()
+    }else if (!animation.began){
+        animation.add({
+            targets: '.split .meji',
+            opacity: 0,
+            scale: split.scaleOut,
+            duration: split.durationOut,
+            easing: "easeInExpo",
+            delay: 1000
+        })
+            .add({
+                targets: '.split .letters-1',
+                opacity: split.opacityIn,
+                scale: split.scaleIn,
+                duration: split.durationIn
+            }).add({
             targets: '.split .letters-1',
+            opacity: 0,
+            scale: split.scaleOut,
+            duration: split.durationOut,
+            easing: "easeInExpo",
+            delay: split.delay
+        }).add({
+            targets: '.split .letters-2',
             opacity: split.opacityIn,
             scale: split.scaleIn,
             duration: split.durationIn
         }).add({
-        targets: '.split .letters-1',
-        opacity: 0,
-        scale: split.scaleOut,
-        duration: split.durationOut,
-        easing: "easeInExpo",
-        delay: split.delay
-    }).add({
-        targets: '.split .letters-2',
-        opacity: split.opacityIn,
-        scale: split.scaleIn,
-        duration: split.durationIn
-    }).add({
-        targets: '.split .letters-2',
-        opacity: 0,
-        scale: split.scaleOut,
-        duration: split.durationOut,
-        easing: "easeInExpo",
-        delay: split.delay
-    }).add({
-        targets: '.split .letters-3',
-        opacity: split.opacityIn,
-        scale: split.scaleIn,
-        duration: split.durationIn
-    }).add({
-        targets: '.split .letters-3',
-        opacity: 0,
-        scale: split.scaleOut,
-        duration: split.durationOut,
-        easing: "easeInExpo",
-        delay: split.delay
-    })
-        .add({
-            targets: '.split .meji',
+            targets: '.split .letters-2',
+            opacity: 0,
+            scale: split.scaleOut,
+            duration: split.durationOut,
+            easing: "easeInExpo",
+            delay: split.delay
+        }).add({
+            targets: '.split .letters-3',
             opacity: split.opacityIn,
             scale: split.scaleIn,
             duration: split.durationIn
+        }).add({
+            targets: '.split .letters-3',
+            opacity: 0,
+            scale: split.scaleOut,
+            duration: split.durationOut,
+            easing: "easeInExpo",
+            delay: split.delay
         })
+            .add({
+                targets: '.split .meji',
+                opacity: split.opacityIn,
+                scale: split.scaleIn,
+                duration: split.durationIn
+            })
+        animation.play()
+    }
 }
 
 

@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import Projects from "./ProjectsComponent";
 import {Loading} from './LoadingComponent'
-import  {scrollAnchors, animateText} from '../utils/tools'
+import  {scrollAnchors, animatione} from '../utils/tools'
 function Hero ({bios, isLoading, errMess}) {
     if(isLoading){
             return(
@@ -20,7 +20,7 @@ function Hero ({bios, isLoading, errMess}) {
     return(
         <section id="hero" className="v-align t-center screen-height dark-bg ">
             <div className="container">
-                <h1 className="font-secondary"><span className="split" onClick={animateText}>
+                <h1 className="font-secondary"   onClick={animatione}><span className="split">
                     <span className="letters meji"> Meji <small>&</small></span>
                     <span className="letters letters-1">The Heart</span>
                   <span className="letters letters-2">is always</span>
