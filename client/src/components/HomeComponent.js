@@ -66,6 +66,7 @@ function Bios ({bios, isLoading, errMess}) {
                             <li><a href="https://www.mongodb.com/" title="Go to MONGODB doc"target="_blank" rel="noopener noreferrer" >MONGODB</a></li>
                             <li><a href="http://www.passportjs.org/" title="Go to PASSPORT JWT doc"target="_blank" rel="noopener noreferrer" >PASSPORT JWT</a></li>
                             <li><a href="https://postcss.org/" title="Go to POSTCSS doc" target="_blank" rel="noopener noreferrer">POSTCSS</a></li>
+                            <li><a href="https://animejs.com/" title="Go to ANIME.JS doc" target="_blank" rel="noopener noreferrer">ANIMEJS</a></li>
                         </ul>
                     </div>
                 </div>
