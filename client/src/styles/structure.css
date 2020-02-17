@@ -57,7 +57,7 @@ header#header {
     position: absolute;
     z-index: 10;
     top: 0;
-    left: 0;
+    right: 0;
     nav {
         display: none;
     }
@@ -76,7 +76,6 @@ header#header {
 #menu-icon:before,
 #menu-icon div {
     background-color: #fff;
-    border-radius: 3px;
     content: '';
     display: block;
     height: 1.5px;
@@ -88,10 +87,10 @@ header#header {
     width: 70%;
 }
 #menu-icon:hover {
-    //&:before {transform: translateY(6px) rotate(135deg);}
-    //&:after {transform: translateY(-6px) rotate(-135deg);}
+    /*&:before {transform: translateY(6px) rotate(135deg);}*/
+    /*&:after {transform: translateY(-6px) rotate(-135deg);}*/
     div {
-        transform: scaleX(2.3) translateX(22px);
+        transform: scaleX(2.3) translateX(-15px);
         position: relative;
     }
     div:after {
@@ -110,6 +109,6 @@ header#header {
         transform: translateY(20px);
     }
     &:after {
-        transform: translateX(75px);
+        transform: translateX(-75px);
     }
 }

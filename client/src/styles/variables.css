@@ -11,11 +11,14 @@
     --font-main: 'Avenir', Helvetica, Sans Serif;
     --font-secondary: 'Reenie Beanie', Helvetica, Sans Serif;
     //Colors
+    --color-form: #ffffff;
+    --main-color: green;
     --textColor: #666;
     --textDarkColor: #000;
     --textLinkColor: #000;
     --hero-bg: #000;
     --backgroundColor: #fff;
+    --error-color: #ff0000;
     //--secondaryColor: lab(32.5 38.5 -47.6 / 90%);
 }
 @custom-media --viewport-xs (max-width: var(--breakpoint-sm));
