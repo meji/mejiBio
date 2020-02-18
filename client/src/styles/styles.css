@@ -20,14 +20,6 @@ a:hover {
     text-decoration: underline;
 }
 
-h1 {
-    font-size: 1300%;
-    font-weight: normal;
-    small {
-        font-size: 40%;
-        margin: 0;
-    }
-}
 h2 {
     font-family: var(--font-secondary);
     font-size: 300%;
@@ -44,20 +36,4 @@ ul.no-style {
 img {
     max-width: 100%;
 }
-.letter{display: inline-block;line-height: 1em;}
-.split {
-    position: relative;
-    min-width: 300px;
-    display: block;;
-    min-height: 150px
-}
-.split .letters:not(.meji) {
-    font-size: 70%;
-    position: absolute;
-    margin: auto;
-    left: 0;
-    top: 0.3em;
-    right: 0;
-    opacity: 0;
-}
-.split .meji{opacity: 1}
+

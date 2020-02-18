@@ -18,6 +18,7 @@
     --font-secondary: 'Reenie Beanie', Helvetica, Sans Serif;
     /*Colors */
     --color-form: #ffffff;
+    --border-form: #cccccc;
     --main-color: green;
     --textColor: #666;
     --textDarkColor: #000;
@@ -59,14 +60,6 @@ a {
 a:hover {
     text-decoration: underline;
 }
-h1 {
-    font-size: 1300%;
-    font-weight: normal;
-}
-h1 small {
-        font-size: 40%;
-        margin: 0;
-    }
 h2 {
     font-family: 'Reenie Beanie'
 ,
@@ -95,23 +88,6 @@ Serif;
 img {
     max-width: 100%;
 }
-.letter{display: inline-block;line-height: 1em;}
-.split {
-    position: relative;
-    min-width: 300px;
-    display: block;;
-    min-height: 150px
-}
-.split .letters:not(.meji) {
-    font-size: 70%;
-    position: absolute;
-    margin: auto;
-    left: 0;
-    top: 0.3em;
-    right: 0;
-    opacity: 0;
-}
-.split .meji{opacity: 1}
 .container {
     margin: 0 auto;
     max-width: 375px;
@@ -178,121 +154,81 @@ img {
     align-content: center;
     text-align: center;
 }
-header#header {
-    cursor: pointer;
-    padding: 0;
-    position: absolute;
-    z-index: 10;
-    top: 0;
-    right: 0;
-}
-header#header nav {
-        display: none;
+/*\/HOME */
+/*Home Hero */
+.home #hero {
+        background-color: #050505;
     }
-#menu-icon {
-    width: 30px;
-    height: 40px;
-    display: inline-block;
-    cursor: url('assets/img/arrow2.svg'), move;
-    padding: 32px;
-    padding: calc(var(--gutter)*2);
-}
-#menu-icon div:after {
+.home #hero h1 {
+        position: relative;
+        z-index: 2;
+        font-size: 1300%;
+        font-weight: normal;
+    }
+.home #hero h1 small {
+            font-size: 40%;
+            margin: 0;
+        }
+.home #hero h2:after {
+        content: '';
+        background-image: url('assets/img/meji.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: 10s;
+        z-index: 1;
         opacity: 0;
     }
-#menu-icon:after,
-#menu-icon:before,
-#menu-icon div {
-    background-color: #fff;
-    content: '';
-    display: block;
-    height: 1.5px;
-    margin: 10px 0;
-    transition: all 0.8s ease-in-out;
-    border-radius: 1px;
-}
-#menu-icon div {
-    width: 70%;
-}
-/*&:after {transform: translateY(-6px) rotate(-135deg);}*/
-#menu-icon:hover div {
-        transform: scaleX(2.3) translateX(-15px);
+.home #hero h1:hover + h2:after {
+        opacity: 1;
+        transition: 7s;
+    }
+.home #hero:hover {
+        cursor: url('assets/img/circle.svg'), move;
+    }
+.home #hero h1:hover {
+            cursor: url('assets/img/heart.svg'), move;
+            transition: 1s;
+        }
+.home #hero h3.claim:hover {
+            cursor: url('assets/img/arrow-down.svg'), move;
+            transition: 1s;
+        }
+.home h2.position {
+        margin-top: 120px;
+        padding: 20px;
+    }
+.home h3.claim {
+        font-weight: 300;
+        opacity: 0.6;
+        padding-bottom: 150px;
+        margin-bottom: -150px;
+        z-index: 2;
         position: relative;
     }
-/*&:before {transform: translateY(6px) rotate(135deg);}*/
-#menu-icon:hover div:after {
-        content: 'Menu';
-        font-family: 'Reenie Beanie'
-,
-Helvetica
-,
-Sans
-Serif;
-        font-family: var(--font-secondary);
-        font-size: 150%;
-        text-transform: uppercase;
+.home .letter{display: inline-block;line-height: 1em;}
+.home .split {
+        position: relative;
+        min-width: 300px;
+        display: block;;
+        min-height: 150px
+    }
+.home .split .letters:not(.meji) {
+        font-size: 70%;
         position: absolute;
-        top: -30px;
-        width: 100px;
-        transform: scaleX(0.4) translateX(-74px);
-        color: #ccc;
-        opacity: 1;
+        margin: auto;
+        left: 0;
+        top: 0.3em;
+        right: 0;
+        opacity: 0;
     }
-#menu-icon:hover:before {
-        transform: translateY(20px);
-    }
-#menu-icon:hover:after {
-        transform: translateX(-75px);
-    }
-#hero {
-    background-color: #050505;
-}
-#hero h1 {
-    position: relative;
-    z-index: 2;
-}
-#hero h2:after {
-    content: '';
-    background-image: url('assets/img/meji.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transition: 10s;
-    z-index: 1;
-    opacity: 0;
-}
-#hero h1:hover + h2:after {
-    opacity: 1;
-    transition: 7s;
-}
-#hero:hover {
-    cursor: url('assets/img/circle.svg'), move;
-}
-#hero h1:hover {
-        cursor: url('assets/img/heart.svg'), move;
-        transition: 1s;
-    }
-#hero h3.claim:hover {
-        cursor: url('assets/img/arrow-down.svg'), move;
-        transition: 1s;
-    }
-h2.position {
-    margin-top: 120px;
-    padding: 20px;
-}
-h3.claim {
-    font-weight: 300;
-    opacity: 0.6;
-    padding-bottom: 150px;
-    margin-bottom: -150px;
-    z-index: 2;
-    position: relative;
-}
+.home .split .meji{opacity: 1}
+/*Bio */
 #bio {
     text-align: center;
     position: relative;
@@ -367,6 +303,7 @@ Serif;
                     transition: 8s;
                     letter-spacing: 6px;
                 }
+/*Home projects */
 #projects div {
         width: 100%;
     }
@@ -425,6 +362,7 @@ Serif;
                 max-width: 140vw;
                 width: auto;
             }
+/*Home projects over Mobile */
 @media (min-width: 540px) {
         #projects ul .featured-project .main-img {
             max-width: 100%;
@@ -434,6 +372,7 @@ Serif;
             opacity: 1;
         }
 }
+/*Animations */
 @keyframes bounceIn {
     0% {
         opacity: 1;
@@ -456,13 +395,15 @@ Serif;
         transform: scale(1.3);
     }
 }
+form{max-width: 600px; margin: 0 auto;
+}
 form label{font-size: 81.25%
     }
 form label.form-check-label{cursor: pointer;}
 form .form-check label{font-size: 70%;}
-form .form-control {background: #ffffff;background: var(--color-form); border: 2px solid #ffffff; border: 2px solid var(--color-form); font-size: 81.25%; line-height: 1.8; padding:12px ;height: 42px; box-shadow: none; -webkit-appearance: none
+form .form-control {background: #ffffff;background: var(--color-form); border: 1px solid #cccccc; border: 1px solid var(--border-form); box-shadow: none; -webkit-appearance: none; border-radius:4px; width: 100%; padding: 16px; padding: var(--gutter); margin: 0 0 10px
     }
-form .form-control:focus{box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); border: 2px solid #ffffff; border: 2px solid var(--color-form);}
+form .form-control:focus{box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); border: 2px solid #ffffff; border: 2px solid var(--color-form);}
 form .form-control:not(:placeholder-shown):not(select){background: #fff; font-weight: bold;}
 form select.form-control{background:url(assets/img/meji.png) no-repeat; background-position:  center right 12px;  -webkit-appearance: none; appearance: none; -moz-appearance:none;  padding: 6px 12px;}
 /*Radio */
@@ -493,8 +434,133 @@ form input.form-control.error::placeholder{color: #ff0000;color: var(--error-col
 form .legal-text{font-size: 81%; height: 100px; overflow: scroll; border: 1px solid rgba(255,255,255,0.2); padding: 10px; display: none;  margin-bottom: 16px
     }
 form .legal-text.grey-border{border: 1px solid #eee; margin-bottom: 32px;}
-@include respond-above(xl){
+@media (min-width: 1024px) {
         form .form-control {border-radius: 6px;}
         form p.notice{border-radius: 8px;}
         form .form-control:focus::placeholder{font-size: 64.25%; line-height: 1; position: relative; top: -10px;}
 }
+header#header {
+    cursor: pointer;
+    padding: 0;
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    right: 0;
+}
+header#header nav {
+        display: none;
+    }
+#menu-icon {
+    width: 30px;
+    height: 40px;
+    display: inline-block;
+    cursor: url('assets/img/arrow2.svg'), move;
+    padding: 32px;
+    padding: calc(var(--gutter)*2);
+}
+#menu-icon div:after {
+        opacity: 0;
+    }
+#menu-icon:after,
+#menu-icon:before,
+#menu-icon div {
+    background-color: #fff;
+    content: '';
+    display: block;
+    height: 1.5px;
+    margin: 10px 0;
+    transition: all 0.8s ease-in-out;
+    border-radius: 1px;
+}
+#menu-icon div {
+    width: 70%;
+}
+/*&:after {transform: translateY(-6px) rotate(-135deg);}*/
+#menu-icon:hover div {
+        transform: scaleX(2.3) translateX(-15px);
+        position: relative;
+    }
+/*&:before {transform: translateY(6px) rotate(135deg);}*/
+#menu-icon:hover div:after {
+        content: 'Menu';
+        font-family: 'Reenie Beanie'
+,
+Helvetica
+,
+Sans
+Serif;
+        font-family: var(--font-secondary);
+        font-size: 150%;
+        text-transform: uppercase;
+        position: absolute;
+        top: -30px;
+        width: 100px;
+        transform: scaleX(0.4) translateX(-74px);
+        color: #ccc;
+        opacity: 1;
+    }
+#menu-icon:hover:before {
+        transform: translateY(20px);
+    }
+#menu-icon:hover:after {
+        transform: translateX(-75px);
+    }
+.project-view #hero {
+        height: 400px;
+        overflow: hidden;
+        position: relative;
+    }
+.project-view #hero .container {
+            position: relative;
+            z-index:1;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+.project-view #hero .container h1{
+                font-family: 'Avenir'
+,
+Helvetica
+,
+Sans
+Serif;
+                font-family: var(--font-main);
+                filter: invert(1);
+                mix-blend-mode: difference;
+                line-height: 1;
+                opacity: 0.3;
+                font-size: 7vw;
+            }
+.project-view #hero img{
+            position: absolute;
+            z-index: 0;
+            top: 0;
+            transition: 10s;
+            min-height: 100vh;
+            min-width: 100vw;
+            max-width: none;
+        }
+.project-view #hero:hover img{
+            transition: 10s;
+            top: -100%;
+        }
+.project-view header{
+        background: #efefef;
+        padding: 64px 0;
+        padding: calc(var(--gutter)*4) 0;
+    }
+.project-view header .flex-container {
+            display: flex;
+        }
+.project-view header .flex-container .logo-img {
+                flex: 1
+            }
+.project-view header .flex-container .data {
+                flex: 5;
+                padding-left: 32px;
+                padding-left: calc(var(--gutter)*2)
+            }
+.project-view .content{padding: 64px 0;padding: calc(var(--gutter)*4) 0;}
+

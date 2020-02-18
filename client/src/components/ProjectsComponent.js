@@ -1,7 +1,6 @@
 import React  from 'react';
 import {Loading} from "./LoadingComponent";
 import {baseUrl} from '../shared/baseUrl'
-import {Link} from 'react-router-dom'
 import  {linkContainer} from '../utils/tools'
 
 function Project({project}){

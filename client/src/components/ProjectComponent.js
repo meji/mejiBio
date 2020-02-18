@@ -16,18 +16,29 @@ function Project(props) {
   } else {
     return (
       <div className="project-view">
-        <div className="hero">
+        <div id="hero">
           <div className="container">
             <h1>{props.project.name}</h1>
           </div>
           <img className="main-img" src={baseUrl+"projects/img/"+props.project.img} alt={props.project.name} title={props.project.name}/>
         </div>
-        <aside>
-          <p>{props.project.charge}</p>
-          <p>{props.project.client}</p>
-          <p>{props.project.date}</p>
-        </aside>
-        <p>{props.project.description}</p>
+
+          <header>
+            <div className="container">
+              <div class="flex-container">
+                <img className="logo-img" src={baseUrl+"projects/img/"+props.project.logo} alt={props.project.name} title={props.project.name}/>
+                <div className="data">
+                  <p><strong>Position:</strong> {props.project.charge}</p>
+                  <p><strong>Client:</strong> {props.project.client}</p>
+                  <p><strong>Date:</strong> {props.project.date}</p>
+                  <p><strong>Website:</strong> <a href={props.project.url} title={"Go to "+props.project.name}>{"Visitar "+props.project.name}</a></p>
+                </div>
+              </div>
+            </div>
+          </header>
+        <div className="container">
+          <div className="content"><p>{props.project.description}</p></div>
+        </div>
       </div>
     )
   }

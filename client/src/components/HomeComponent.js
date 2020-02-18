@@ -78,7 +78,7 @@ function Bios ({bios, isLoading, errMess}) {
 
 function Home(props) {
     return (
-        <>
+        <div class="home">
             <Hero
                 bios={props.bios}
                 isLoading = {props.bioLoading}
@@ -96,7 +96,7 @@ function Home(props) {
             {/*    postMessage= {props.postMessage}*/}
             {/*    resetMessageForm={props.resetMessageForm}*/}
             {/*     />*/}
-        </>
+        </div>
     );
 }
 
