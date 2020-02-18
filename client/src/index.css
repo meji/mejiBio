@@ -376,12 +376,12 @@ Serif;
         margin: 0;
         padding: 0;
     }
-#projects ul .featured-proyect {
+#projects ul .featured-project {
             min-height: 33vh;
             overflow: hidden;
             position: relative;
         }
-#projects ul .featured-proyect h2 {
+#projects ul .featured-project h2 {
                 font-family: 'Avenir'
 ,
 Helvetica
@@ -394,29 +394,29 @@ Serif;
                 line-height: 1;
                 opacity: 0.3;
             }
-#projects ul .featured-proyect:hover {
+#projects ul .featured-project:hover {
                 cursor: url('assets/img/arrow.svg'), move;
             }
-#projects ul .featured-proyect:hover h2 {
+#projects ul .featured-project:hover h2 {
                     filter: invert(50%);
                     transition: 4s;
                     mix-blend-mode: color-dodge;
                 }
-#projects ul .featured-proyect:hover img.logo-img {
+#projects ul .featured-project:hover img.logo-img {
                     filter: invert(100%);
                     opacity: 0.6;
                 }
-#projects ul .featured-proyect:hover img.main-img {
+#projects ul .featured-project:hover img.main-img {
                     transition: 10s;
                     top: -40vh;
                     min-height: 100%;
                 }
-#projects ul .featured-proyect .logo-img {
+#projects ul .featured-project .logo-img {
                 max-width: 200px;
                 display: block;
                 margin: 20px auto;
             }
-#projects ul .featured-proyect .main-img {
+#projects ul .featured-project .main-img {
                 height: auto;
                 position: absolute;
                 left: 0;
@@ -426,10 +426,10 @@ Serif;
                 width: auto;
             }
 @media (min-width: 540px) {
-        #projects ul .featured-proyect .main-img {
+        #projects ul .featured-project .main-img {
             max-width: 100%;
         }
-        #projects ul .featured-proyect h2 {
+        #projects ul .featured-project h2 {
             font-size: 6vw;
             opacity: 1;
         }

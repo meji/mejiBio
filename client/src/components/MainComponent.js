@@ -42,11 +42,7 @@ const mapDispatchtoProps = (dispatch) => ({
 })
 
 
-const ProjectWithId = ({match}) =>{
-    return(
-        <Project project = {this.props.projects.projects.filter((project)=> project.id === parseInt(match.params.projectId, 10))[0]}/>
-    )
-}
+
 
 class Main extends Component{
 
@@ -59,6 +55,14 @@ class Main extends Component{
     }
 
     render() {
+        const ProjectWithName = ({match}) =>{
+            return(
+              <Project project = {this.props.projects.projects.filter((project)=> project.name === match.params.projectName)[0]}
+                       isLoading = {this.props.projects.isLoading}
+                       errMess = {this.props.projects.errMess}
+              />
+            )
+        }
         return(
             <div>
                 <Header/>
@@ -91,7 +95,7 @@ class Main extends Component{
                             projectsLoading={this.props.projects.isLoading}
                             projectsErrMess={this.props.projects.errMess}
                         />}/>
-                        <Route path="/projects/:projectId" component={ProjectWithId}/>
+                        <Route path="/projects/:projectName" component={ProjectWithName}/>
                         <Route exact path="/admin" component={()=><Admin
                             authenticated={this.props.authenticated.authenticated}
                             location={this.props.history}

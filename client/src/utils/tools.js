@@ -1,9 +1,10 @@
 import anime from 'animejs'
+import { baseUrl } from '../shared/baseUrl'
 
 export const scrollAnchors = (e, respond = null) => {
     const distanceToTop = el => Math.floor(el.getBoundingClientRect().top);
     e.preventDefault();
-    var targetID = e.target.getAttribute('data-href');
+    const targetID = e.target.getAttribute('data-href');
     const targetAnchor = document.querySelector(targetID);
     if (!targetAnchor) return;
     const originalTop = distanceToTop(targetAnchor);
@@ -17,6 +18,12 @@ export const scrollAnchors = (e, respond = null) => {
             clearInterval(checkIfDone);
         }
     }, 500);
+}
+
+export const linkContainer = (e, respond = null) => {
+    e.preventDefault();
+    const target = e.target.dataset.href
+    return window.location.assign(target)
 }
 
 const split = {};
@@ -87,6 +94,27 @@ export const animatione = ()=> {
     }
 }
 
+export const isAuthenticated = () => {
+    const token = localStorage.getItem('jwt');
+    return fetch(baseUrl + 'admin?token='+token).then(response =>{
+          if(response.ok){
+              return response
+          }else{
+              var error = new Error('Error '+response.status + ': '+ response.statusText)
+              error.response = response;
+              throw error;
+          }
+      },
+      error => {
+          var errmess = new Error(error.message);
+          throw errmess
+      })
+      .then(response => response.json())
+      .then(response =>  response.data)
+      .catch(error => {
+          console.log('Authenticacion:'+ error.message)
+      })
+}
 
 
 

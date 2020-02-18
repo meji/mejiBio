@@ -127,7 +127,7 @@ h3.claim {
         width: 100%;
         margin: 0;
         padding: 0;
-        .featured-proyect {
+        .featured-project {
             min-height: 33vh;
             overflow: hidden;
             position: relative;
@@ -176,7 +176,7 @@ h3.claim {
 }
 
 @media (--viewport-md) {
-    #projects ul .featured-proyect {
+    #projects ul .featured-project {
         .main-img {
             max-width: 100%;
         }

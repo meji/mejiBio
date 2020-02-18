@@ -1,11 +1,14 @@
 import React  from 'react';
 import {Loading} from "./LoadingComponent";
 import {baseUrl} from '../shared/baseUrl'
+import {Link} from 'react-router-dom'
+import  {linkContainer} from '../utils/tools'
 
 function Project({project}){
+
     return (
-        <li className="featured-proyect">
-            <h2>{project.name}</h2>
+        <li className="featured-project" onClick={e=> linkContainer(e)} data-href={"/projects/"+project.name}>
+          <h2>{project.name}</h2>
             <img className="logo-img" src={baseUrl+"projects/img/"+project.logo} alt={project.name} title={project.name}/>
             <img className="main-img" src={baseUrl+"projects/img/"+project.img} alt={project.name} title={project.name}/>
         </li>
