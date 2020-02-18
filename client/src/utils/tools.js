@@ -21,8 +21,7 @@ export const scrollAnchors = (e, respond = null) => {
 }
 
 export const linkContainer = (e, respond = null) => {
-    e.preventDefault();
-    const target = e.target.dataset.href
+    const target = e.currentTarget.querySelector('h2').dataset.href
     return window.location.assign(target)
 }
 
