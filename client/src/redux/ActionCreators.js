@@ -1,9 +1,8 @@
 import * as ActionTypes from './ActionTypes';
-import {baseUrl} from '../shared/baseUrl'
 
 export const fetchBio = () => (dispatch) => {
     dispatch(bioLoading(true));
-    return fetch(baseUrl+'bio')
+    return fetch(process.env.REACT_APP_SERVER_URL+'bio')
         .then(response =>{
                 if(response){
                     return response
@@ -37,7 +36,7 @@ export const addBio = (bios) => ({
 })
 export const fetchProjects = () => (dispatch) => {
     dispatch(projectsLoading(true));
-    return fetch(baseUrl + 'projects')
+    return fetch(process.env.REACT_APP_SERVER_URL + 'projects')
         .then(response =>{
                 if(response.ok){
                     return response
@@ -72,7 +71,7 @@ export const addProjects = (projects) => ({
 
 export const fetchJobs = () => (dispatch) => {
     dispatch(jobsLoading(true));
-    return fetch(baseUrl + 'jobs')
+    return fetch(process.env.REACT_APP_SERVER_URL + 'jobs')
         .then(response =>{
                 if(response.ok){
                     return response
@@ -106,7 +105,7 @@ export const addJobs = (jobs) => ({
 })
 export const fetchCourses = () => (dispatch) => {
     dispatch(coursesLoading(true));
-    return fetch(baseUrl + 'courses')
+    return fetch(process.env.REACT_APP_SERVER_URL + 'courses')
         .then(response =>{
                 if(response.ok){
                     return response
@@ -157,7 +156,7 @@ export const postMessage= (firstname, lastname, telnum, email, messagetext, subj
     }
     newMessage.date = new Date().toISOString();
 
-    return fetch(baseUrl + 'messages/new', {
+    return fetch(process.env.REACT_APP_SERVER_URL + 'messages/new', {
         method: 'POST',
         body: JSON.stringify(newMessage),
         headers: {
@@ -195,7 +194,7 @@ export const authenticationFailed = (errmess) => ({
 
 export const isAuthenticated = () => (dispatch) => {
     const token = localStorage.getItem('jwt');
-    return fetch(baseUrl + 'admin?token='+token).then(response =>{
+    return fetch(process.env.REACT_APP_SERVER_URL + 'admin?token='+token).then(response =>{
             if(response.ok){
                 return response
             }else{
@@ -226,7 +225,7 @@ export const postBio= (position, claim, biotext) => (dispatch) => {
         biotext: biotext
     }
     console.log("El Bio que se envia es: "+JSON.stringify(newBio))
-    return fetch(baseUrl + 'bio/new', {
+    return fetch(process.env.REACT_APP_SERVER_URL + 'bio/new', {
         method: 'POST',
         body: JSON.stringify(newBio),
         headers: {
@@ -267,7 +266,7 @@ export const postCourse= (name, description, school, dateInit, dateEnd) => (disp
         dateEnd: dateEnd
     }
     console.log("El curso que se envia es: "+newCourse)
-    return fetch(baseUrl + 'courses/new', {
+    return fetch(process.env.REACT_APP_SERVER_URL + 'courses/new', {
         method: 'POST',
         body: JSON.stringify(newCourse),
         headers: {
@@ -308,7 +307,7 @@ export const postJob= (name, description, company, dateInit, dateEnd) => (dispat
         dateEnd: dateEnd
     }
     console.log("El curso que se envia es: "+newJob)
-    return fetch(baseUrl + 'jobs/new', {
+    return fetch(process.env.REACT_APP_SERVER_URL + 'jobs/new', {
         method: 'POST',
         body: JSON.stringify(newJob),
         headers: {
@@ -350,7 +349,7 @@ export const postProject= (name, charge, client, date,  description,  token, url
         url: url
     }
     console.log("El curso que se envia es: "+newProject)
-    return fetch(baseUrl + 'projects/new?token='+token, {
+    return fetch(process.env.REACT_APP_SERVER_URL + 'projects/new?token='+token, {
         method: 'POST',
         body: JSON.stringify(newProject),
         headers: {
@@ -386,7 +385,7 @@ export const postImgProject= (img, logo, token, name) => (dispatch) => {
     const formData = new FormData();
     formData.append('image', img[0]);
     formData.append('logo', logo[0])
-    return fetch(baseUrl + `/projects/newimg/?name=${name}&token=${token}`, {
+    return fetch(process.env.REACT_APP_SERVER_URL + `/projects/newimg/?name=${name}&token=${token}`, {
         method: 'POST',
         body: formData
     })

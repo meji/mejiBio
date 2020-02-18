@@ -1,5 +1,4 @@
 import anime from 'animejs'
-import { baseUrl } from '../shared/baseUrl'
 
 export const scrollAnchors = (e, respond = null) => {
     const distanceToTop = el => Math.floor(el.getBoundingClientRect().top);
@@ -95,7 +94,7 @@ export const animatione = ()=> {
 
 export const isAuthenticated = () => {
     const token = localStorage.getItem('jwt');
-    return fetch(baseUrl + 'admin?token='+token).then(response =>{
+    return fetch(process.env.REACT_APP_SERVER_URL + 'admin?token='+token).then(response =>{
           if(response.ok){
               return response
           }else{

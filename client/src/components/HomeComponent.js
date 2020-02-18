@@ -2,14 +2,13 @@ import React from 'react';
 import Projects from "./ProjectsComponent";
 import {Loading} from './LoadingComponent'
 import  {scrollAnchors, animatione} from '../utils/tools'
+import addBodyClassName from '../utils/addBodyClassName'
+import {Fade, Stagger} from 'react-animation-components'
+
 function Hero ({bios, isLoading, errMess}) {
     if(isLoading){
             return(
-                <section id="hero" className="v-align t-center screen-height dark-bg ">
-                    <div className="container">
-                        <Loading/>
-                    </div>
-                </section>
+                  <Loading/>
             );
         }
         else if(errMess) {
@@ -35,13 +34,7 @@ function Hero ({bios, isLoading, errMess}) {
 function Bios ({bios, isLoading, errMess}) {
     if(isLoading){
         return(
-            <section id="bio" className="v-align t-center screen-height">
-                <div className="container">
-                    <div className="v-center">
-                        <Loading/>
-                    </div>
-                </div>
-            </section>
+            <Loading/>
         );
     }
     else if(errMess) {
@@ -76,7 +69,8 @@ function Bios ({bios, isLoading, errMess}) {
 }
 
 
-function Home(props) {
+export default function  Home(props) {
+    addBodyClassName('home');
     return (
         <div class="home">
             <Hero
@@ -101,4 +95,3 @@ function Home(props) {
 }
 
 
-export default Home;

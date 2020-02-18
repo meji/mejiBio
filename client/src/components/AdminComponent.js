@@ -4,7 +4,6 @@ import  NewBio from './adminForms/NewBio'
 import  NewJob from './adminForms/NewJob'
 import  NewCourse from './adminForms/NewCourse'
 import  NewProject from './adminForms/NewProject'
-import {baseUrl} from '../shared/baseUrl'
 
 function Admin(props){
     useEffect(()=> {
@@ -48,7 +47,7 @@ function Admin(props){
           <>
               <h1>Admin Page</h1>
               <p>Debes estar logueado para acceder a esta página</p>
-              <a className="btn" href={baseUrl+"auth/google"}>Login Google</a>
+              <a className="btn" href={process.env.REACT_APP_SERVER_URL+"auth/google"}>Login Google</a>
           </>
       )
 }

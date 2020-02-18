@@ -1,6 +1,5 @@
 import React  from 'react';
 import {Loading} from "./LoadingComponent";
-import {baseUrl} from '../shared/baseUrl'
 import  {linkContainer} from '../utils/tools'
 
 function Project({project}){
@@ -8,8 +7,8 @@ function Project({project}){
     return (
         <li className="featured-project" onClick={e=> linkContainer(e)}>
           <h2 data-href={"/projects/"+project.name}>{project.name}</h2>
-            <img className="logo-img" src={baseUrl+"projects/img/"+project.logo} alt={project.name} title={project.name}/>
-            <img className="main-img" src={baseUrl+"projects/img/"+project.img} alt={project.name} title={project.name}/>
+            <img className="logo-img" src={process.env.REACT_APP_SERVER_URL+"projects/img/"+project.logo} alt={project.name} title={project.name}/>
+            <img className="main-img" src={process.env.REACT_APP_SERVER_URL+"projects/img/"+project.img} alt={project.name} title={project.name}/>
         </li>
     )
 }

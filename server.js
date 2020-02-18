@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const mongoose = require("mongoose");
 const port = process.env.PORT || 5000;
 const  cors = require('cors');
-var fileupload = require("express-fileupload");
+const fileupload = require("express-fileupload");
 
 
 

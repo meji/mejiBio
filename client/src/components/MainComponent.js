@@ -10,6 +10,7 @@ import {Switch, Route, Redirect, withRouter} from 'react-router-dom'
 import {connect} from 'react-redux';
 import {fetchBio, fetchJobs, fetchProjects, fetchCourses, postMessage, isAuthenticated, postCourse, postBio, postProject, postJob, postImgProject} from '../redux/ActionCreators'
 import {actions} from 'react-redux-form'
+import{TransitionGroup, CSSTransition} from 'react-transition-group'
 
 const mapStateToProps = state =>{
     return {
@@ -67,50 +68,54 @@ class Main extends Component{
             <div>
                 <Header/>
                 <main>
-                    <Switch>
-                        <Route exact path="/" component={()=> <Home
-                            bios={this.props.bios.bios}
-                            bioLoading={this.props.bios.isLoading}
-                            bioErrMess={this.props.bios.errMess}
-                            projects={this.props.projects.projects.filter(project => project.featured === true)}
-                            projectsLoading={this.props.projects.isLoading}
-                            projectsErrMess={this.props.projects.errMess}
-                            postMessage= {this.props.postMessage}
-                            resetMessageForm={this.props.resetMessageForm}
-                            />}/>
-                        />}/>
-                        <Route exact path="/cv" component={()=><Cv
-                            projects={this.props.projects.projects.filter(project => project.featured === true)}
-                            projectsLoading={this.props.projects.isLoading}
-                            projectsErrMess={this.props.projects.errMess}
-                            courses={this.props.courses.courses}
-                            coursesLoading={this.props.courses.isLoading}
-                            coursesErrMess={this.props.courses.errMess}
-                            jobs={this.props.jobs.jobs}
-                            jobsLoading={this.props.jobs.isLoading}
-                            jobsErrMess={this.props.projects.errMess}
-                        />}/>
-                        <Route exact path="/projects" component={()=> <Projects
-                            projects={this.props.projects.projects}
-                            projectsLoading={this.props.projects.isLoading}
-                            projectsErrMess={this.props.projects.errMess}
-                        />}/>
-                        <Route path="/projects/:projectName" component={ProjectWithName}/>
-                        <Route exact path="/admin" component={()=><Admin
-                            authenticated={this.props.authenticated.authenticated}
-                            location={this.props.history}
-                            postBio={this.props.postBio}
-                            resetBioForm={this.props.resetBioForm}
-                            postCourse={this.props.postCourse}
-                            resetCourseForm={this.props.resetCourseForm}
-                            postJob={this.props.postJob}
-                            resetJobForm={this.props.resetJobForm}
-                            postProject={this.props.postProject}
-                            resetProjectForm={this.props.resetProjectForm}
-                            postImgProject={this.props.postImgProject}
-                        />}/>
-                        <Redirect to="/"/>
-                    </Switch>
+                    <TransitionGroup>
+                        <CSSTransition key={this.props.location.key} classNames="page" timeout={300}>
+                            <Switch>
+                                <Route exact path="/" component={()=> <Home
+                                    bios={this.props.bios.bios}
+                                    bioLoading={this.props.bios.isLoading}
+                                    bioErrMess={this.props.bios.errMess}
+                                    projects={this.props.projects.projects.filter(project => project.featured === true)}
+                                    projectsLoading={this.props.projects.isLoading}
+                                    projectsErrMess={this.props.projects.errMess}
+                                    postMessage= {this.props.postMessage}
+                                    resetMessageForm={this.props.resetMessageForm}
+                                    />}/>
+                                />}/>
+                                <Route exact path="/cv" component={()=><Cv
+                                    projects={this.props.projects.projects.filter(project => project.featured === true)}
+                                    projectsLoading={this.props.projects.isLoading}
+                                    projectsErrMess={this.props.projects.errMess}
+                                    courses={this.props.courses.courses}
+                                    coursesLoading={this.props.courses.isLoading}
+                                    coursesErrMess={this.props.courses.errMess}
+                                    jobs={this.props.jobs.jobs}
+                                    jobsLoading={this.props.jobs.isLoading}
+                                    jobsErrMess={this.props.projects.errMess}
+                                />}/>
+                                <Route exact path="/projects" component={()=> <Projects
+                                    projects={this.props.projects.projects}
+                                    projectsLoading={this.props.projects.isLoading}
+                                    projectsErrMess={this.props.projects.errMess}
+                                />}/>
+                                <Route path="/projects/:projectName" component={ProjectWithName}/>
+                                <Route exact path="/admin" component={()=><Admin
+                                    authenticated={this.props.authenticated.authenticated}
+                                    location={this.props.history}
+                                    postBio={this.props.postBio}
+                                    resetBioForm={this.props.resetBioForm}
+                                    postCourse={this.props.postCourse}
+                                    resetCourseForm={this.props.resetCourseForm}
+                                    postJob={this.props.postJob}
+                                    resetJobForm={this.props.resetJobForm}
+                                    postProject={this.props.postProject}
+                                    resetProjectForm={this.props.resetProjectForm}
+                                    postImgProject={this.props.postImgProject}
+                                />}/>
+                                <Redirect to="/"/>
+                            </Switch>
+                        </CSSTransition>
+                    </TransitionGroup>
                 </main>
                 <Footer/>
             </div>
