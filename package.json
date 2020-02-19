@@ -9,7 +9,8 @@
     "start-nodemon": "nodemon server/index.js",
     "client": "cd client && npm run start",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "cd server npm install cd ./../client && npm install && npm run build-server"
+    "heroku-prebuild": "mkdir -R node_modules cd server && mkdir -R node_modules  && cd ./../client && mkdir -R node_modules && cd..",
+    "heroku-postbuild": "cd server &&  npm install && cd ./../client && npm install && npm run build-server"
   },
   "repository": {
     "type": "git",
