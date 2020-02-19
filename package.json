@@ -7,12 +7,11 @@
     "start": "node server/index.js",
     "dev": "concurrently --kill-others 'npm run start-nodemon' 'npm run watch' 'npm run serve'",
     "start-nodemon": "nodemon server/index.js",
-    "watch": "parcel watch client/index.html -d build/output --public-url /dist/",
+    "watch": "parcel watch client/index.js -d build/output --public-url /js",
     "serve": "parcel serve client/index.html -p 3000",
     "test": "echo \"Error: no test specified\" && exit 1",
     "pre-build": "rm -R dist",
-    "build": "concurrently 'npm run pre-build' 'npm run building'",
-    "building": "parcel build client/index.js –out-dir build/output –public-url /dist/"
+    "build": "parcel build client/index.js –out-dir build/output –public-url /js"
   },
   "repository": {
     "type": "git",
