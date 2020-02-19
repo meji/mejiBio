@@ -12,6 +12,7 @@
         "babel-preset-react": "^6.24.1",
         "eslintrc": "^1.0.6",
         "express": "^4.17.1",
+        "parcel": "^1.12.4",
         "postcss": "^7.0.26",
         "query-string": "^6.10.1",
         "react": "^16.12.0",
