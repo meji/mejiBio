@@ -26,12 +26,12 @@ app.engine('jsx', require('express-react-views').createEngine());
 app.use(cors());
 
 
-// create a GET route
-app.get('/express_backend', (req, res) => {
-    res.send({ express: 'YOUR EXPRESS BACKEND IS CONNECTED TO REACT' });
-});
+app.use('/backend/', require('./routes'));
 
-app.use('/', require('./routes'));
+const appDir = path.dirname(require.main.filename)
+app.get('*', (req, res) => {
+    res.sendFile(path.join(appDir+'/client/public', 'index.html'));
+});
 
 // error handler
 app.use(function(err, req, res, next) {
