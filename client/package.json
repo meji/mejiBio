@@ -47,6 +47,7 @@
         "redux-thunk": "^2.3.0"
     },
     "scripts": {
+        "building": "parcel build index.js –out-dir build/output –public-url /dist/",
         "build:css": "postcss src/styles/main.css -o src/index.css",
         "watch:css": "postcss src/styles/main.css -o src/index.css -w",
         "start": "npm-run-all -p watch:css start-js",
