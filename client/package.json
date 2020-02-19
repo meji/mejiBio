@@ -34,7 +34,7 @@
         "start": "npm-run-all -p watch:css serve",
         "watch:parcel": "parcel watch src/index.html",
         "serve": "parcel serve -p 3000 src/index.html",
-        "build": "npm-run-all build:css build-js  build:parcel",
+        "build": "npm-run-all build:css build:parcel",
         "test": "react-scripts test --env=jsdom",
         "eject": "react-scripts eject",
         "format": "prettier --write \"modules/**/*.{js,jsx,ts,tsx,json,css,md}\""
