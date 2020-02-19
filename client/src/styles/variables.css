@@ -23,7 +23,8 @@
     --backgroundColor: #fff;
     --error-color: #ff0000;
     //--secondaryColor: lab(32.5 38.5 -47.6 / 90%);
-    --transition-normal: 0.3s
+    --transition-normal: 0.3s;
+    --border-radius: 4px;
 }
 @custom-media --viewport-xs (max-width: var(--breakpoint-sm));
 @custom-media --viewport-sm (min-width: var(--breakpoint-sm));

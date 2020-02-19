@@ -4,9 +4,11 @@ import  NewBio from './adminForms/NewBio'
 import  NewJob from './adminForms/NewJob'
 import  NewCourse from './adminForms/NewCourse'
 import  NewProject from './adminForms/NewProject'
+import addBodyClassName from '../utils/addBodyClassName'
 
 function Admin(props){
-    useEffect(()=> {
+  addBodyClassName('admin');
+  useEffect(()=> {
         const query = queryString.parse(props.location.location.search);
         if (query.token) {
           window.localStorage.setItem("jwt", query.token);

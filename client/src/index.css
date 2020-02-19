@@ -2,7 +2,7 @@
     font-family: "Reenie Beanie";
     font-style: normal;
     font-weight: 400;
-    src: local("Reenie Beanie"),local(ReenieBeanie),url(//fonts.gstatic.com/s/reeniebeanie/v10/z7NSdR76eDkaJKZJFkkjuvWxXPq1rw.eot?#) format("eot"),url(//fonts.gstatic.com/s/reeniebeanie/v10/z7NSdR76eDkaJKZJFkkjuvWxXPq1qw.woff2) format("woff2"),url(//fonts.gstatic.com/s/reeniebeanie/v10/z7NSdR76eDkaJKZJFkkjuvWxXPq1rQ.woff) format("woff")
+    src: local("Reenie Beanie"),local(ReenieBeanie),url(//fonts.gstatic.com/s/reeniebeanie/v10/z7NSdR76eDkaJKZJFkkjuvWxXPq1rw.eot?#) format("eot"),url(//fonts.gstatic.com/s/reeniebeanie/v10/z7NSdR76eDkaJKZJFkkjuvWxXPq1qw.woff2) format("woff2"),url(//fonts.gstatic.com/s/reeniebeanie/v10/z7NSdR76eDkaJKZJFkkjuvWxXPq1rQ.woff) format("woff");
 }
 :root {
     --breakpoint-sm: 375px;
@@ -29,7 +29,8 @@
     --backgroundColor: #fff;
     --error-color: #ff0000;
     /*--secondaryColor: lab(32.5 38.5 -47.6 / 90%); */
-    --transition-normal: 0.3s
+    --transition-normal: 0.3s;
+    --border-radius: 4px;
 }
 html {
     overflow-x: hidden;
@@ -444,7 +445,7 @@ form label{font-size: 81.25%
     }
 form label.form-check-label{cursor: pointer;}
 form .form-check label{font-size: 70%;}
-form .form-control {background: #ffffff;background: var(--colorForm); border: 1px solid #cccccc; border: 1px solid var(--borderForm); box-shadow: none; -webkit-appearance: none; border-radius:4px; width: 100%; padding: 16px; padding: var(--gutter); margin: 0 0 10px
+form .form-control {background: #ffffff;background: var(--colorForm); border: 1px solid #cccccc; border: 1px solid var(--borderForm); box-shadow: none; -webkit-appearance: none; border-radius:4px; width: 100%; padding: 16px; padding: var(--gutter); margin: 0 0 10px; box-sizing: border-box
     }
 form .form-control:focus{box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); border: 2px solid #ffffff; border: 2px solid var(--colorForm);}
 form .form-control:not(:placeholder-shown):not(select){background: #fff; font-weight: bold;}
@@ -477,6 +478,9 @@ form input.form-control.error::placeholder{color: #ff0000;color: var(--error-col
 form .legal-text{font-size: 81%; height: 100px; overflow: scroll; border: 1px solid rgba(255,255,255,0.2); padding: 10px; display: none;  margin-bottom: 16px
     }
 form .legal-text.grey-border{border: 1px solid #eee; margin-bottom: 32px;}
+form input[type="submit"], form .btn, form button{border-radius: 4px;border-radius: var(--border-radius); padding: 10px; text-transform: uppercase; color: green; color: var(--main-color); border-color: green; border-color: var(--main-color); background: transparent
+    }
+form input[type="submit"]:hover,form .btn:hover,form button:hover{border-color: green;border-color: var(--main-color);  color: #ffffff; background: green; background: var(--main-color); cursor: pointer}
 @media (min-width: 1024px) {
         form .form-control {border-radius: 6px;}
         form p.notice{border-radius: 8px;}
@@ -685,5 +689,8 @@ Serif;
                 }
                 .project-view header .flex-container .logo-img{flex: 1}
                 .project-view header .flex-container .content{flex: 4 }
+}
+body.admin{
+    text-align: center;
 }
 
