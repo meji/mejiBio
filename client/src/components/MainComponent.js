@@ -98,7 +98,7 @@ class Main extends Component{
                                     projectsLoading={this.props.projects.isLoading}
                                     projectsErrMess={this.props.projects.errMess}
                                 />}/>
-                                <Route path="/projects/:projectName" component={ProjectWithName}/>
+                                <Route exact path="/projects/:projectName" component={ProjectWithName}/>
                                 <Route exact path="/admin" component={()=><Admin
                                     authenticated={this.props.authenticated.authenticated}
                                     location={this.props.history}

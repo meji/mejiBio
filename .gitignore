@@ -125,4 +125,4 @@ yarn-debug.log*
 yarn-error.log*
 
 #uploads
-/uploads
+/server/uploads

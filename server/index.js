@@ -18,19 +18,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(fileupload());
-app.use(express.static(__dirname + '../uploads'));
-app.set('view engine', 'jsx');
-app.engine('jsx', require('express-react-views').createEngine());
 
 //Para cross domain:
 app.use(cors());
 
+app.set('view engine', 'jsx');
+app.set('views', path.join(__dirname, 'views'));
+app.engine('jsx', require('express-react-views').createEngine());
 
+app.use(express.static('dist'))
 app.use('/backend/', require('./routes'));
-
-const appDir = path.dirname(require.main.filename)
-app.get('*', (req, res) => {
-    res.sendFile(path.join(appDir+'/client/public', 'index.html'));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve('dist'));
 });
 
 // error handler
@@ -54,4 +53,5 @@ mongoose
         throw error;
     });
 mongoose.set('useFindAndModify', false);
+
 module.exports = app;
