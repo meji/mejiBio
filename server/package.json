@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/meji/mejiBio#readme",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bcrypt": "^3.0.7",
     "concurrently": "^5.1.0",
     "cookie-parser": "^1.4.4",
